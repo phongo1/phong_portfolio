@@ -9,16 +9,16 @@ import { avatar_card } from '../assets';
 
 const Landing = () => {
   return (
-    <section className={`text-white w-full h-svh py-[8rem] flex flex-wrap ${styles.paddingX} sm:h-auto` } >
-      <motion.div className='w-auto max-w-7xl mx-auto h-[25rem] flex flex-col justify-center gap-2'>
+    <section className={`text-white w-full h-auto xl:h-screen max-h-auto py-[8rem] flex flex-wrap ${styles.paddingX} ` } >
+      <motion.div className='mt-[-4rem] w-auto max-w-7xl mx-auto h-[25rem] flex flex-col justify-center gap-2'>
         <p className='text-3xl'>Hello, I'm</p>
-        <span className='text-6xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text'>
+        <span className='font-bold text-6xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>
           <Typewriter
             options={{
               strings: ["Phong"],
               autoStart: true,
               loop: true,
-              delay: 300,
+              delay: 320,
               cursor: "_",
             }}
           />

@@ -1,16 +1,36 @@
 import React from 'react'
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { IoIosPaperPlane } from "react-icons/io";
 
 import { styles } from '../styles'
-
+import { portrait, phong_resume } from '../assets';
+import { useCardTilt } from './cardTilt.jsx'
 const About = () => {
+  const { rotateX, rotateY, handleMouseMove, handleMouseLeave } = useCardTilt();
+
   return (
-    <section className={`text-white w-full py-[4rem] flex flex-col ${styles.paddingX}`} >
-      <motion.h1 className='self-center pb-[3rem]'>About Me</motion.h1>
-      <motion.div className={`flex flex-row ${styles.paddingX} max-w-7xl mx-auto`}>
-        <div className='h-6 w-6 bg-white'></div>
-        <p>Lorem Ipsum</p>
-      </motion.div>
+    <section id='about' className={`text-white w-full h-auto py-[2rem] flex flex-col ${styles.paddingX}`} >
+      <motion.h1 className='self-center pb-[3rem] font-bold'>About Me</motion.h1>
+      <div className={`flex flex-row ${styles.paddingX} h-auto`}>
+        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative mx-auto place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
+          <img className=" rounded-lg absolute inset-y--2 inset-x-2" src={portrait} alt='self-portrait' style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
+        </motion.div>
+        <div className='max-w-[34rem] min-w-[15rem] text-2xl'>
+          <p >Hello, I'm <b>Phong Le</b>, a second-year Computer Science student at the University of Virginia. </p>
+          <br></br>
+          <p>Currently working toward a BSCS with a minor in applied mathematics. </p>
+          <br></br>
+          <p>I'm passionate about learning new technologies and making an impact.</p>
+          <div className='w-3/4 h-auto flex mt-10 '>
+            <a href={phong_resume} target='_blank' className='mx-auto'>
+              <div className='flex flex-row h-auto w-auto  text-fuchsia-50 items-center gap-1 rounded-2xl  bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-3 py-1 '>
+                <IoIosPaperPlane />
+                Resume
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
