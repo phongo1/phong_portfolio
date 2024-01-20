@@ -1,4 +1,4 @@
-// import { mobile, backend, creator, web, javascript, typescript, html, css, reactjs, redux, tailwind, nodejs, mongodb, git, figma, docker, meta, starbucks, tesla, shopify, carrent, jobit, tripguide, threejs, } from "../assets";
+import { spotlist, aipi, uva_cs } from "../assets";
   
   export const navLinks = [
     {
@@ -73,55 +73,38 @@
   
   const experiences = [
     {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-    //   icon: starbucks,
+      title: "Full Stack Software Developer Intern",
+      company_name: "Spotlist",
+      icon: spotlist,
       iconBg: "#383E56",
-      date: "March 2020 - April 2021",
+      date: "Aug 2023 - Nov 2023",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Implemented front-end mobile user interfaces and functionality using React Native.",
+        "Developed and maintained robust and scalable RESTful APIs using Django REST framework",
+        "Tested API end points and database interactions with Postman",
       ],
     },
     {
-      title: "React Native Developer",
-      company_name: "Tesla",
-    //   icon: tesla,
+      title: "Software Developer Intern",
+      company_name: "AiPi Solutions",
+      icon: aipi,
       iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
+      date: "May 2023 - Aug 2023",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Led a team of 8 interns in training a Large Language Model to automate editing process of Non-Disclosure Agreements, reducing NDA review time by at least 60%.",
+        "Utilized Jira and Agile Development methodologies to streamline project workflows and team collaboration.",
+        "Developed Python code utilizing Openai API to train 'DaVinci' language model on a data set of 250 attorney revised NDA's",
       ],
     },
     {
-      title: "Web Developer",
-      company_name: "Shopify",
-    //   icon: shopify,
-      iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
+      title: "Undergraduate Researcher",
+      company_name: "UVA CS",
+      icon: uva_cs,
+      iconBg: "white",
+      date: "Aug 2023 - Present",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "Full stack Developer",
-      company_name: "Meta",
-    //   icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Integrated Large Language Models for accurately generating software and non-software specification with regular expressions",
+        " Constructed an internal database of RegEx conversions for LLM training using PyTorch to automate natural language to RegEx conversions",
       ],
     },
   ];

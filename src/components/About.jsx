@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { IoIosPaperPlane } from "react-icons/io";
+import { LuMouse } from "react-icons/lu";
+
 
 import { styles } from '../styles'
 import { portrait, phong_resume } from '../assets';
@@ -9,19 +11,25 @@ const About = () => {
   const { rotateX, rotateY, handleMouseMove, handleMouseLeave } = useCardTilt();
 
   return (
-    <section id='about' className={`text-white w-full h-auto py-[2rem] flex flex-col ${styles.paddingX}`} >
+    <section id='about' className={`text-white w-full h-auto flex flex-col ${styles.paddingX} `} >
       <motion.h1 className='self-center pb-[3rem] font-bold'>About Me</motion.h1>
-      <div className={`flex flex-row ${styles.paddingX} h-auto`}>
-        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative mx-auto place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
+      <div className={`flex flex-row ${styles.paddingX} h-auto gap-[6rem] mx-auto`}>
+        
+        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
+          <div className='absolute z-30 top-[-1rem] font-light text-gray-400 flex flex-row gap-1 items-center animate-pulse text-xs'>
+            <LuMouse className='animate-bounce'/>
+            hover me
+          </div>
           <img className=" rounded-lg absolute inset-y--2 inset-x-2" src={portrait} alt='self-portrait' style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
         </motion.div>
-        <div className='max-w-[34rem] min-w-[15rem] text-2xl'>
+
+        <div className='max-w-[30rem] min-w-[15rem] text-2xl'>
           <p >Hello, I'm <b>Phong Le</b>, a second-year Computer Science student at the University of Virginia. </p>
           <br></br>
           <p>Currently working toward a BSCS with a minor in applied mathematics. </p>
           <br></br>
           <p>I'm passionate about learning new technologies and making an impact.</p>
-          <div className='w-3/4 h-auto flex mt-10 '>
+          <div className='w-full h-auto flex mt-10 '>
             <a href={phong_resume} target='_blank' className='mx-auto'>
               <div className='flex flex-row h-auto w-auto  text-fuchsia-50 items-center gap-1 rounded-2xl  bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-3 py-1 '>
                 <IoIosPaperPlane />

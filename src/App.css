@@ -8,6 +8,7 @@
   z-index: 0;
   display: flex;
   flex-direction: column;
+  gap: 10rem;
 }
 
 .Typewriter__cursor{

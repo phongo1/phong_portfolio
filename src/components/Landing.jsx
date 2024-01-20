@@ -9,7 +9,7 @@ import { avatar_card } from '../assets';
 
 const Landing = () => {
   return (
-    <section className={`text-white w-full h-auto xl:h-screen max-h-auto py-[8rem] flex flex-wrap ${styles.paddingX} ` } >
+    <section className={`text-white w-full h-auto pt-[8rem] flex flex-wrap ${styles.paddingX} ` } >
       <motion.div className='mt-[-4rem] w-auto max-w-7xl mx-auto h-[25rem] flex flex-col justify-center gap-2'>
         <p className='text-3xl'>Hello, I'm</p>
         <span className='font-bold text-6xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>
