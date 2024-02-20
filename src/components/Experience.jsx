@@ -57,19 +57,18 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const Experience = () => {
-
   return (
-    <div className='mx-auto'>
-      <motion.div>
-        <p className={`${styles.sectionSubText} text-center`}>
+    <div className='mx-auto' >
+      <motion.div >
+        <p className={`${styles.sectionSubText} text-center`} >
           What I have done so far
         </p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>
+        <h2 className={`${styles.sectionHeadText} text-center`} id='experience'>
           Work Experience.
         </h2>
       </motion.div>
 
-      <div className='mt-20 flex flex-col'>
+      <div className='mt-20 flex flex-col' >
         <VerticalTimeline>
           {experiences.map((experience, index) => (
             <ExperienceCard

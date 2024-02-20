@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import './App.css'
 
@@ -9,14 +9,14 @@ import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Navbar></Navbar>
-      <Landing></Landing>
-      <About></About>
-      <Experience></Experience>
-      <Projects></Projects>
-      <Tech></Tech>
-      <Contact></Contact>
+    <BrowserRouter >
+        <Navbar />
+        <Landing/>
+        <About />
+        <Experience />
+        <Projects />
+        <Tech />
+        <Contact />
     </BrowserRouter>
   );
 }
