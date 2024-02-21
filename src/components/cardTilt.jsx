@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useMotionValue, useSpring, useTransform } from "framer-motion";
 
 // This could be a custom hook if used for setting up motion values and providing event handlers
 export const useCardTilt = () => {

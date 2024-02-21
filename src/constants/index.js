@@ -84,7 +84,7 @@ import { spotlist, aipi, uva_cs } from "../assets";
       date: "Aug 2023 - Nov 2023",
       points: [
         "Implemented front-end mobile user interfaces and functionality using React Native.",
-        "Developed and maintained robust and scalable RESTful APIs using Django REST framework",
+        "Created and maintained robust and scalable RESTful APIs using Django REST framework, ensuring efficient data communication between front-end and back-end systems",
         "Tested API end points and database interactions with Postman",
       ],
     },

@@ -1,15 +1,13 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState } from 'react'
 import Typewriter from "typewriter-effect";
 import { motion } from "framer-motion";
 import Spline from '@splinetool/react-spline';
 
 import { styles } from '../styles';
-import { avatar_body } from '../assets';
-import { avatar_card } from '../assets';
+
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(true);
-
 
 
   return (
@@ -30,9 +28,9 @@ const Landing = () => {
         <p className='text-base'>an aspiring software engineer</p>
       </motion.div>
       
-      <motion.div className='w-[45rem] h-[25rem] relative overflow-visible flex '>
-        <Spline scene="https://prod.spline.design/QAGyEAONPrAsk4Gv/scene.splinecode" onLoad={()=>console.log("LOADED")}/>
-      </motion.div>
+      <div className='w-[45rem] h-[25rem] relative overflow-visible flex align-middle justify-center'>
+        <Spline scene="https://prod.spline.design/QAGyEAONPrAsk4Gv/scene.splinecode" onLoad={()=>console.log("LOADED")} load/>
+      </div>
     </section>
   )
 }
