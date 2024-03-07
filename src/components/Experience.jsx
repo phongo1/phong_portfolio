@@ -60,9 +60,6 @@ const Experience = () => {
   return (
     <div className='mx-auto' >
       <motion.div >
-        <p className={`${styles.sectionSubText} text-center`} >
-          What I have done so far
-        </p>
         <h2 className={`${styles.sectionHeadText} text-center`} id='experience'>
           Work Experience.
         </h2>

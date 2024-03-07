@@ -37,8 +37,8 @@ const Navbar = () => {
               <a
                 href={`#${Link.id}`}
                 className={`${
-                  active === Link.title ? "text-white" : "text-ivory"
-                } hover:text-white text-[18px] font-medium cursor-pointer`}
+                  active === Link.title ? "text-#4d52ff" : "text-ivory"
+                } text-[18px] font-medium cursor-pointer transition duration-300 ease-in-out `}
               >
                 {Link.title}
               </a>

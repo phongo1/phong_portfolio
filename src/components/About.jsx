@@ -11,16 +11,16 @@ const About = () => {
   const { rotateX, rotateY, handleMouseMove, handleMouseLeave } = useCardTilt();
 
   return (
-    <section id='about' className={`text-white w-full h-auto flex flex-col ${styles.paddingX} `} >
+    <section id='about' className={`text-white w-full h-auto flex flex-col ${styles.paddingX}`} >
       <motion.h1 className='self-center pb-[3rem] font-bold'>About Me</motion.h1>
       <div className={`flex flex-row ${styles.paddingX} h-auto gap-[6rem] mx-auto`}>
         
-        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
+        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex ' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
           <div className='absolute z-30 top-[-1rem] font-light text-gray-400 flex flex-row gap-1 items-center animate-pulse text-xs'>
-            <LuMouse className='animate-bounce'/>
+            <LuMouse className='animate-bounce '/>
             hover me
           </div>
-          <img  className=" rounded-lg absolute inset-y--2 inset-x-2" src={portrait} alt='self-portrait' style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
+          <img  className=" rounded-lg absolute inset-y--2 inset-x-2 " src={portrait} alt='self-portrait' style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
         </motion.div>
 
         <div className='max-w-[30rem] min-w-[15rem] text-2xl'>
@@ -30,8 +30,8 @@ const About = () => {
           <br></br>
           <p>I'm passionate about learning new technologies and making an impact.</p>
           <div className='w-full h-auto flex mt-10 '>
-            <a href={phong_resume} target='_blank' className='mx-auto'>
-              <div className='flex flex-row h-auto w-auto  text-fuchsia-50 items-center gap-1 rounded-2xl  bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-3 py-1 '>
+            <a href={phong_resume} target='_blank' className='mx-auto' >
+              <div className='flex flex-row h-auto w-auto  text-fuchsia-50 items-center gap-1 rounded-2xl  bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-3 py-1 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg'>
                 <IoIosPaperPlane />
                 Resume
               </div>

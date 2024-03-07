@@ -29,7 +29,7 @@ const Landing = () => {
       </motion.div>
       
       <div className='w-[45rem] h-[25rem] relative overflow-visible flex align-middle justify-center'>
-        <Spline scene="https://prod.spline.design/QAGyEAONPrAsk4Gv/scene.splinecode" onLoad={()=>console.log("LOADED")} load/>
+        <Spline scene="https://prod.spline.design/QAGyEAONPrAsk4Gv/scene.splinecode"/>
       </div>
     </section>
   )

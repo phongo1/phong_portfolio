@@ -24,9 +24,8 @@ const Projects = () => {
         >
           <p>
             "For the things we have to learn before we can do them, we learn by
-            doing them."
+            doing them." {"</Aristotle>"}
           </p>
-          <p>{"</Aristotle>"}</p>
         </div>
       </div>
     </div>
