@@ -11,8 +11,8 @@ const Landing = () => {
 
 
   return (
-    <section className={`text-white w-full h-auto pt-[8rem] flex flex-wrap ${styles.paddingX} `} >
-      <motion.div className='mt-[-4rem] w-auto max-w-7xl mx-auto h-[25rem] flex flex-col justify-center gap-2'>
+    <section className={`text-white w-full h-auto pt-[8rem] flex flex-wrap ${styles.paddingX} mx-auto gap-x-16`} >
+      <motion.div className='pb-16 w-fit max-w-7xl h-[25rem] flex flex-col justify-center align-center gap-2 mx-auto'>
         <p className='text-4xl'>Hello, I'm</p>
         <span className='font-bold text-6xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>
           <Typewriter
@@ -25,7 +25,7 @@ const Landing = () => {
             }}
           />
         </span>
-        <p className='text-base'>an aspiring software engineer</p>
+        <p className='text-base'>an incoming software engineer</p>
       </motion.div>
       
       <div className='w-[45rem] h-[25rem] relative overflow-visible flex align-middle justify-center'>

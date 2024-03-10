@@ -58,14 +58,14 @@ const ExperienceCard = ({ experience }) => {
 
 const Experience = () => {
   return (
-    <div className='mx-auto' >
+    <div className='mx-auto' id='experience' >
       <motion.div >
-        <h2 className={`${styles.sectionHeadText} text-center`} id='experience'>
+        <h1 className={`self-center font-bold text-center bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text`} >
           Work Experience.
-        </h2>
+        </h1>
       </motion.div>
 
-      <div className='mt-20 flex flex-col' >
+      <div className='mt-16 flex flex-col' >
         <VerticalTimeline>
           {experiences.map((experience, index) => (
             <ExperienceCard

@@ -1,4 +1,4 @@
-import { spotlist, aipi, uva_cs } from "../assets";
+import * as assets from "../assets";
   
   export const navLinks = [
     {
@@ -20,66 +20,13 @@ import { spotlist, aipi, uva_cs } from "../assets";
   ];
   
   
-  const technologies = [
-    // {
-    //   name: "HTML 5",
-    //   icon: html,
-    // },
-    // {
-    //   name: "CSS 3",
-    //   icon: css,
-    // },
-    // {
-    //   name: "JavaScript",
-    //   icon: javascript,
-    // },
-    // {
-    //   name: "TypeScript",
-    //   icon: typescript,
-    // },
-    // {
-    //   name: "React JS",
-    //   icon: reactjs,
-    // },
-    // {
-    //   name: "Redux Toolkit",
-    //   icon: redux,
-    // },
-    // {
-    //   name: "Tailwind CSS",
-    //   icon: tailwind,
-    // },
-    // {
-    //   name: "Node JS",
-    //   icon: nodejs,
-    // },
-    // {
-    //   name: "MongoDB",
-    //   icon: mongodb,
-    // },
-    // {
-    //   name: "Three JS",
-    //   icon: threejs,
-    // },
-    // {
-    //   name: "git",
-    //   icon: git,
-    // },
-    // {
-    //   name: "figma",
-    //   icon: figma,
-    // },
-    // {
-    //   name: "docker",
-    //   icon: docker,
-    // },
-  ];
+
   
   const experiences = [
     {
       title: "Full Stack Software Developer Intern",
       company_name: "Spotlist",
-      icon: spotlist,
+      icon: assets.spotlist, 
       iconBg: "#383E56",
       date: "Aug 2023 - Nov 2023",
       points: [
@@ -91,7 +38,7 @@ import { spotlist, aipi, uva_cs } from "../assets";
     {
       title: "Software Developer Intern",
       company_name: "AiPi Solutions",
-      icon: aipi,
+      icon: assets.aipi,
       iconBg: "#E6DEDD",
       date: "May 2023 - Aug 2023",
       points: [
@@ -103,7 +50,7 @@ import { spotlist, aipi, uva_cs } from "../assets";
     {
       title: "Undergraduate Researcher",
       company_name: "UVA CS",
-      icon: uva_cs,
+      icon: assets.uva_cs,
       iconBg: "white",
       date: "Aug 2023 - Present",
       points: [
@@ -116,28 +63,54 @@ import { spotlist, aipi, uva_cs } from "../assets";
   const projects = [
     {
       id: 1,
-      title: "Project 1",
-      gif: "url-to-gif",
-      staticImg: "url-to-static-image",
-      description: "Detailed description here...",
-      link: " "
+      name: "SimpliSplit",
+      type: { "name": "Mobile Application", "color": "blue-400" },
+      image: assets.ss_logo,
+      description: "An app-store published mobile app to streamline bill splitting by allowing users to scan a receipt, match friends to receipt items, and send Venmo requests accordingly with one click",
+      bulletPoints: ["Utilized tesseract for receipt scanning (OCR)",
+       "React Native for front-end mobile development",
+       "Venmo API for payment processing",
+      "Firebase for user account database storage",
+      "Built custom API using Python Flask"],
+      skills: [
+        { "name": "React Native", "color": "green" },
+        { "name": "Python", "color": "yellow" },
+        { "name": "Flask", "color": "violet" },
+
+      ],
+      link: "https://github.com/user/project1",
+      video: "path/to/video1.mp4"
     },
     {
       id: 2,
-      title: "Project 2",
-      gif: "url-to-gif",
-      staticImg: "url-to-static-image",
-      description: "Detailed description here...",
-      link: " "
+      name: "Phobot",
+      type: { "name": "Discord Bot", "color": "[#566af6]" },
+      image: assets.pho_icon,
+      description: "A multifaceted Discord Bot that can run autonomously, pull league of legends game data, send customized emails, search google, automatically welcome new server users, tell random jokes, and relay bot latency",
+      bulletPoints: [""],
+      skills: [
+        { "name": "Python", "color": "yellow" },
+        { "name": "Discord API", "color": "blue" },
+      ],
+      link: "https://github.com/user/project1",
+      video: "path/to/video1.mp4"
     },
     {
       id: 3,
-      title: "Project 3",
-      gif: "url-to-gif",
-      staticImg: "url-to-static-image",
-      description: "Detailed description here...",
-      link: " "
+      name: "Fantasy Shooter",
+      type: { "name": "2D - Platformer Game", "color": "emerald-400" },
+      image: assets.game_logo,
+      description: "A 2D RPG inspired shooter-platformer game using pygame and UVAGE (UVA game engine)",
+      bulletPoints: [""],
+      skills: [
+        { "name": "Python", "color": "yellow" },
+        { "name": "Pygame", "color": "red" },
+
+      ],
+      link: "https://github.com/phongo1/Fantasy-Shooter-Game-",
+      video: "path/to/video1.mp4"
     },
-  ];
+
+  ]
   
-  export { technologies, experiences, projects };
+  export { experiences, projects };

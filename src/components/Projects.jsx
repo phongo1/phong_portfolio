@@ -1,33 +1,50 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { projects } from "../constants";
-import { styles } from "../styles";
+import {projects} from "../constants";
+import ProjectModal from './ProjectModal';
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
-  const [activeProject, setActiveProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleClick = (project) => {
-    setActiveProject(activeProject === project.id ? null : project.id);
+  const openModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <div
-      className={`${styles.paddingX} w-full h-auto flex flex-col bg-black gap-16`}
+      className={` w-full h-auto flex flex-col gap-20`}
+      id="projects"
     >
-      <div>
-        <h2 className={`${styles.sectionHeadText} text-center`} id="projects">
+      <motion.div className="w-full flex flex-col gap-4">
+        <h1 className={`self-center pb-[1rem] font-bold text-center bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text`}>
           Projects.
-        </h2>
+        </h1>
         <div
-          className={`sm:text-[14px] text-[12px] text-secondary uppercase tracking-wider text-center`}
+          className={`sm:text-[14px] text-[12px] py-2 text-secondary uppercase tracking-wider text-center bg-black w-full `}
         >
           <p>
-            "For the things we have to learn before we can do them, we learn by
-            doing them." {"</Aristotle>"}
+            “Tell me and I forget, teach me and I may remember, involve me and I learn.” {"</Benjamin Franklin>"}
           </p>
         </div>
+      </motion.div>
+      <div className="w-full mx-auto gap-10 justify-center flex flex-row flex-wrap">
+        {projects.map(project => (
+          <div key={project.id} onClick={() => openModal(project)} className="cursor-pointer">
+            <ProjectCard project={project} />
+          </div>
+        ))}
       </div>
+      {selectedProject && (
+        <ProjectModal project={selectedProject} isOpen={isModalOpen} onClose={closeModal} />
+      )}
     </div>
   );
 };

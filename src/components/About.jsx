@@ -12,7 +12,7 @@ const About = () => {
 
   return (
     <section id='about' className={`text-white w-full h-auto flex flex-col ${styles.paddingX}`} >
-      <motion.h1 className='self-center pb-[3rem] font-bold'>About Me</motion.h1>
+      <motion.h1 className='self-center pb-[3rem] font-bold bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text'>About Me</motion.h1>
       <div className={`flex flex-row ${styles.paddingX} h-auto gap-[6rem] mx-auto`}>
         
         <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex ' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
