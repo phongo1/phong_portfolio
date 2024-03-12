@@ -18,14 +18,20 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             </li>
           ))}
         </ul>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-blue-500 text-white p-2 mt-2 rounded"
-        >
-          GitHub Link
-        </a>
+        {project.link === null ? (
+          <span className="inline-block bg-blue-500 text-white p-2 mt-2 rounded">
+            Private Repo
+          </span>
+        ) : (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-blue-500 text-white p-2 mt-2 rounded hover:cursor-pointer"
+          >
+            GitHub Link
+          </a>
+        )}
         <button
           onClick={onClose}
           className="block ml-auto bg-red-500 text-white p-2 mt-4 rounded"

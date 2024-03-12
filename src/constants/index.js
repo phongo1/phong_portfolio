@@ -78,7 +78,7 @@ import * as assets from "../assets";
         { "name": "Flask", "color": "violet" },
 
       ],
-      link: "https://github.com/user/project1",
+      link: null,
       video: "path/to/video1.mp4"
     },
     {
@@ -87,12 +87,14 @@ import * as assets from "../assets";
       type: { "name": "Discord Bot", "color": "[#566af6]" },
       image: assets.pho_icon,
       description: "A multifaceted Discord Bot that can run autonomously, pull league of legends game data, send customized emails, search google, automatically welcome new server users, tell random jokes, and relay bot latency",
-      bulletPoints: [""],
+      bulletPoints: ["Built with Discord API, Riot API, googlesearch API, and BeautifulSoup for webscraping"],
       skills: [
         { "name": "Python", "color": "yellow" },
         { "name": "Discord API", "color": "blue" },
+        { "name": "Web Scraping", "color": "orange" },
+
       ],
-      link: "https://github.com/user/project1",
+      link: "https://github.com/phongo1/discord_bot",
       video: "path/to/video1.mp4"
     },
     {
