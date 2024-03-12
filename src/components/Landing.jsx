@@ -11,7 +11,7 @@ const Landing = () => {
 
 
   return (
-    <section className={`text-white w-full h-auto pt-[8rem] flex flex-wrap ${styles.paddingX} mx-auto gap-x-16`} >
+    <section className={`text-white w-full h-auto pt-[11rem] flex flex-wrap ${styles.paddingX} mx-auto gap-x-16`} >
       <motion.div className='pb-16 w-fit max-w-7xl h-[25rem] flex flex-col justify-center align-center gap-2 mx-auto'>
         <p className='text-4xl'>Hello, I'm</p>
         <span className='font-bold text-6xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>

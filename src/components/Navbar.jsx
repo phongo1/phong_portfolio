@@ -1,40 +1,64 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import { styles } from '../styles';
-import { navLinks } from '../constants';
-import { logo, menu, close } from '../assets';
+import { styles } from "../styles";
+import { navLinks } from "../constants";
+import { logo, menu, close } from "../assets";
 
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import { motion, AnimatePresence } from "framer-motion";
 
+const navbarAnimation = {
+  hidden: {
+    opacity: 0,
+    scale: 0.9,
+    y: -10,
+    transition: {
+      duration: 0.4,
+      ease: "easeInOut",
+    },
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeInOut",
+    },
+  },
+};
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
 
   useScrollPosition(() => {
-
-
-    let newActive = '';
-    if (document.getElementById("about").getBoundingClientRect().y - 100 > 0 && (active != "phong")) {
+    let newActive = "";
+    if (
+      document.getElementById("about").getBoundingClientRect().y - 100 > 0 &&
+      active != "phong"
+    ) {
       setActive("phong");
     }
-    navLinks.forEach(link => {
+    navLinks.forEach((link) => {
       const section = document.getElementById(link.id);
       if (section) {
         const rect = section.getBoundingClientRect();
-        const isVisible = (
+        const isVisible =
           rect.top - 200 < 0 && // Top of the section is within the viewport
-          rect.bottom > 0 // Bottom of the section hasn't scrolled past the top edge
-        );
-  
+          rect.bottom > 0; // Bottom of the section hasn't scrolled past the top edge
+
         if (isVisible) {
           newActive = link.title;
         }
       }
     });
-  
-    if (newActive !== active && document.getElementById("about").getBoundingClientRect().y - 100 < 0) {
+
+    if (
+      newActive !== active &&
+      document.getElementById("about").getBoundingClientRect().y - 100 < 0
+    ) {
       setActive(newActive);
     }
   }, [active]);
@@ -44,11 +68,10 @@ const Navbar = () => {
     const section = document.getElementById(id);
     if (section) {
       const sectionTop = section.getBoundingClientRect().y;
-  
+
       window.scrollTo(0, window.scrollY + sectionTop);
     }
   };
-  
 
   return (
     <nav
@@ -67,7 +90,11 @@ const Navbar = () => {
             alt="logo"
             className="rounded-full w-[2.5rem] h-[2.5rem] object-contain mr-2"
           ></img>
-          <p className={`${active === "phong" ? "text-violet-500" : "text-white"} text-[1.25rem] font-bold cursor-pointer `}>
+          <p
+            className={`${
+              active === "phong" ? "text-violet-500" : "text-white"
+            } text-[1.25rem] font-bold cursor-pointer `}
+          >
             Phong Le
           </p>
         </Link>
@@ -95,37 +122,57 @@ const Navbar = () => {
             onClick={() => setToggle(!toggle)}
           />
 
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w[140px] z-10 rounded-xl`}
-          >
-            <ul className="list-none flex justify-end items-start flex-col gap-4">
-              {navLinks.map((Link) => (
-                <li key={Link.id} 
-                onClick={() => {
-                  setToggle(!toggle);
-                  setActive(Link.title);
-                  }}
-                >
-                  <a
-                    href={`#${Link.id}`}
-                    className={`${
-                      active === Link.title ? "text-white" : "text-stone"
-                    } font-poppins font-medium cursour-pointer text-[16px]`}
-                  >
-                    {Link.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-
+          <AnimatePresence>
+            {toggle && (
+              <motion.div
+                className="absolute top-16 right-4 min-w-[140px] z-10"
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={navbarAnimation}
+                key="dropdown" // Important for AnimatePresence to track
+              >
+                {/* triangle shape for the drop down */}
+                <div className="absolute right-[6px] -top-3 z-10">
+                  <div
+                    style={{
+                      width: 0,
+                      height: 0,
+                      borderLeft: "10px solid transparent",
+                      borderRight: "10px solid transparent",
+                      borderBottom: "15px solid #16112b",
+                    }}
+                  ></div>
+                </div>
+                <ul className="list-none flex justify-end items-start flex-col gap-4 bg-[#16112b] p-3 pr-8 rounded-md">
+                  {navLinks.map((link) => (
+                    <li
+                      key={link.id}
+                      onClick={() => {
+                        setToggle(!toggle);
+                        setActive(link.title);
+                      }}
+                    >
+                      <a
+                        href={`#${link.id}`}
+                        className={`${
+                          active === link.title
+                            ? "text-violet-500"
+                            : "text-white"
+                        } font-poppins font-medium cursor-pointer text-[16px]`}
+                      >
+                        {link.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </nav>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
