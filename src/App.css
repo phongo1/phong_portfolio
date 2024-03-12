@@ -12,6 +12,23 @@
   overflow: hidden;
 }
 
+::-webkit-scrollbar-track {
+  background-color: #0C0914; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white; 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: black; 
+}
+
+::-webkit-scrollbar {
+  width: 5px; /* Width of the vertical scrollbar */
+  height: 8px; /* Height of the horizontal scrollbar */
+}
 
 .Typewriter__cursor{
   color: white;

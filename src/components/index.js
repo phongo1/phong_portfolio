@@ -11,5 +11,5 @@ export {
   Experience,
   Contact,
   Landing,
-  Projects
+  Projects,
 }
