@@ -79,7 +79,7 @@ const Navbar = () => {
                 onClick={(e) => handleClick(e, Link.id)}
                 className={`${
                   active === Link.title ? "text-violet-500" : "text-ivory"
-                } text-[18px] font-medium cursor-pointer transition duration-300 ease-in-out `}
+                } text-[20px] font-medium cursor-pointer transition duration-300 ease-in-out `}
               >
                 {Link.title}
               </a>

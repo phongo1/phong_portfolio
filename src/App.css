@@ -8,7 +8,7 @@
   z-index: 0;
   display: flex;
   flex-direction: column;
-  gap: 10rem;
+  gap: 12rem;
   overflow: hidden;
 }
 
