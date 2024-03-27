@@ -12,6 +12,7 @@ import game_logo from "./game_logo.png"
 import gradebuddy_logo from "./gradebuddy_logo.png"
 import joseweb_thumbnail from "./joseweb_thumbnail.png"
 import beach_portrait from "./portrait_beach.jpg"
+import ellucian_logo from "./ellucian_logo.jpg"
 
 export {
     logo,
@@ -28,4 +29,5 @@ export {
     gradebuddy_logo,
     joseweb_thumbnail,
     beach_portrait,
+    ellucian_logo,
 };
