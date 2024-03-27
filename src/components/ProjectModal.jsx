@@ -5,12 +5,11 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
-      <div className="bg-white p-4 rounded-lg max-w-xl mx-auto">
-        <h2 className="text-xl font-bold">{project.name}</h2>
-        <p>{project.description}</p>
-        {project.video && (
+      <div className="bg-white p-4 rounded-lg max-w-xl mx-auto min-w-96">
+        <h2 className="text-xl font-bold text-black mb-4">{project.name}</h2>
+        {/* {project.video && (
           <video controls src={project.video} className="w-full mt-2"></video>
-        )}
+        )} */}
         <ul className="list-disc pl-5 py-2">
           {project.bulletPoints.map((point, index) => (
             <li key={index} className="text-gray-600">
@@ -34,7 +33,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         )}
         <button
           onClick={onClose}
-          className="block ml-auto bg-red-500 text-white p-2 mt-4 rounded"
+          className="block ml-auto bg-red-500 text-white p-2 rounded"
         >
           Close
         </button>
