@@ -16,6 +16,7 @@ const Contact = () => {
   return (
     <div
       className={`flex flex-col flex-wrap items-center w-full h-fit bg-[#1d1836] pt-5 gap-5 `}
+      id='contact'
     >
       <h2
         className={`self-center pb-[1rem] font-bold text-4xl text-center bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text`}

@@ -48,16 +48,21 @@ const Navbar = () => {
         const isVisible =
           rect.top - 200 < 0 && // Top of the section is within the viewport
           rect.bottom > 0; // Bottom of the section hasn't scrolled past the top edge
+      
+        const scrolledToBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight;
 
         if (isVisible) {
           newActive = link.title;
+        }
+        else if(scrolledToBottom) {
+          newActive = 'Contact';
         }
       }
     });
 
     if (
       newActive !== active &&
-      document.getElementById("about").getBoundingClientRect().y - 100 < 0
+      document.getElementById("about").getBoundingClientRect().y - 75 < 0
     ) {
       setActive(newActive);
     }
