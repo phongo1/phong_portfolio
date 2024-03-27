@@ -154,7 +154,7 @@ const projects = [
       "A commisioned website for Jose, an author who was publishing a new book called \"Queen of Heaven\"",
     bulletPoints: [],
     skills: [
-      { name: "HTML / CSS", color: "cyan" },
+      { name: "HTML/CSS", color: "cyan" },
       { name: "Javascript", color: "yellow" },
     ],
     link: "https://github.com/phongo1/phongo1.github.io",

@@ -29,7 +29,7 @@ const Projects = () => {
         </h1>
 
       </motion.div>
-      <div className="w-full mx-auto gap-20 justify-center flex flex-row flex-wrap px-8 max-w-[90rem]">
+      <div className="w-full mx-auto gap-20 justify-center flex flex-row flex-wrap px-10 max-w-[90rem]">
         {projects.map(project => (
           <div key={project.id} onClick={() => openModal(project)} className="cursor-pointer">
             <ProjectCard project={project} />
