@@ -89,6 +89,7 @@ const Navbar = () => {
             src={logo}
             alt="logo"
             className="rounded-full w-[2.5rem] h-[2.5rem] object-contain mr-2"
+            draggable="false"
           ></img>
           <p
             className={`${
@@ -120,6 +121,7 @@ const Navbar = () => {
             alt="menu"
             className="object-contain cursor-pointer"
             onClick={() => setToggle(!toggle)}
+            draggable="false"
           />
 
           <AnimatePresence>

@@ -8,6 +8,7 @@ const ProjectCard = ({ project }) => {
           src={project.image}
           alt={project.name}
           className="object-cover"
+          draggable="false"
         />
       </div>
       <div className="h-fit px-6 pb-6">

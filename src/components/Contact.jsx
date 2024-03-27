@@ -10,7 +10,7 @@ import { beach_portrait } from "../assets";
 const Contact = () => {
   return (
     <div
-      className={`flex flex-col flex-wrap items-center w-full h-fit bg-[#1d1836] py-4 gap-5`}
+      className={`flex flex-col flex-wrap items-center w-full h-fit bg-[#1d1836] pt-5 pb-8 gap-5 `}
     >
       <h2
         className={`self-center pb-[1rem] font-bold text-4xl text-center bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text`}
@@ -21,6 +21,7 @@ const Contact = () => {
         <img
           src={beach_portrait}
           className="object-contain scale-150 translate-y-4"
+          draggable="false"
         />
       </div>
 
