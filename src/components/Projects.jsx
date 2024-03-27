@@ -27,15 +27,9 @@ const Projects = () => {
         <h1 className={`self-center pb-[1rem] font-bold text-center bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text`}>
           Projects.
         </h1>
-        <div
-          className={`sm:text-[14px] text-[10px] py-1 text-secondary uppercase tracking-wider text-center bg-black w-full `}
-        >
-          <p>
-            “Tell me and I forget, teach me and I may remember, involve me and I learn.” {"</Benjamin Franklin>"}
-          </p>
-        </div>
+
       </motion.div>
-      <div className="w-full mx-auto gap-20 justify-center flex flex-row flex-wrap">
+      <div className="w-full mx-auto gap-20 justify-center flex flex-row flex-wrap px-8 max-w-[90rem]">
         {projects.map(project => (
           <div key={project.id} onClick={() => openModal(project)} className="cursor-pointer">
             <ProjectCard project={project} />
