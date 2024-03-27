@@ -2,7 +2,7 @@ import React from "react";
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="bg-[#1d1836] rounded-lg overflow-hidden hover:scale-110 transition-scale duration-300 ease-in-out w-[23rem] flex flex-col items-center gap-4">
+    <div className="bg-[#1d1836] rounded-lg overflow-hidden hover:scale-110 hover:shadow-xl hover:shadow-indigo-600/50 transition-scale duration-300 ease-in-out w-[18rem] md:w-[23rem] flex flex-col items-center gap-4 shadow-md shadow-indigo-600/50">
       <div className="w-full h-44 bg-white rounded-t-md overflow-hidden flex justify-center items-center">
         <img
           src={project.image}
@@ -19,7 +19,7 @@ const ProjectCard = ({ project }) => {
         </div>
         <p className="text-sm">{project.description}</p>
 
-        <div className="flex flex-wrap aligns-center mt-4 ">
+        <div className="flex flex-wrap aligns-center mt-4 gap-y-2 ">
           {project.skills.map((skill, index) => (
             <span
               key={index}

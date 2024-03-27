@@ -31,6 +31,7 @@ const ExperienceCard = ({ experience }) => {
           />
         </div>
       }
+      className='hover:scale-105 transition ease-in-out duration-700'
     >
       <div>
         <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
@@ -65,7 +66,7 @@ const Experience = () => {
         </h1>
       </motion.div>
 
-      <div className='mt-16 flex flex-col' >
+      <div className='mt-16 flex flex-col ' >
         <VerticalTimeline>
           {experiences.map((experience, index) => (
             <ExperienceCard
