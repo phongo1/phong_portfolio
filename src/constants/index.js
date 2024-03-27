@@ -57,7 +57,7 @@ const experiences = [
     title: "Software Developer Intern",
     company_name: "AiPi Solutions",
     icon: assets.aipi,
-    iconBg: "#E6DEDD",
+    iconBg: "#FFFF",
     date: "Summer 2023",
     points: [
       "Led a team of 8 interns in training a Large Language Model to automate editing process of Non-Disclosure Agreements, reducing NDA review time by at least 60%.",
