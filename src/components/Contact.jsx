@@ -5,12 +5,17 @@ import { FaInstagram, FaLink } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
+import { FaReact } from "react-icons/fa";
+import { SiVite } from "react-icons/si";
+import { BiLogoTailwindCss } from "react-icons/bi";
+
+
 import { beach_portrait } from "../assets";
 
 const Contact = () => {
   return (
     <div
-      className={`flex flex-col flex-wrap items-center w-full h-fit bg-[#1d1836] pt-5 pb-8 gap-5 `}
+      className={`flex flex-col flex-wrap items-center w-full h-fit bg-[#1d1836] pt-5 gap-5 `}
     >
       <h2
         className={`self-center pb-[1rem] font-bold text-4xl text-center bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text`}
@@ -38,6 +43,14 @@ const Contact = () => {
         <a href="https://www.linkedin.com/in/phongle1x/" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300">
           <FaLinkedin />
         </a>
+      </div>
+      <div className=" w-full h-9 relative bottom-0 flex items-center justify-center gap-3">
+        <span className="text-xs text-indigo-200">Built with</span>
+        <FaReact className="text-indigo-200"/>
+        
+        <SiVite className="text-indigo-200"/>
+        
+        <BiLogoTailwindCss className="text-indigo-200"/>
       </div>
     </div>
   );
