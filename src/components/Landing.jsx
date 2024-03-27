@@ -16,7 +16,7 @@ const Landing = () => {
   const loaderVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
-    exit: { opacity: 0, transition: { duration: 0.5 } } 
+    exit: { opacity: 0, transition: { duration: .6 } } 
   };
 
   return (
@@ -26,7 +26,7 @@ const Landing = () => {
       <AnimatePresence>
         {isLoading && (
           <motion.div
-            className="flex flex-col gap-2 justify-center items-center w-full h-full fixed z-40 bg-black top-0"
+            className="flex flex-col gap-2 justify-center items-center w-screen h-full fixed z-40 bg-black top-0"
             initial="hidden"
             animate="visible"
             exit="exit"
