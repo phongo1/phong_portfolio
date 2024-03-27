@@ -12,7 +12,7 @@ const About = () => {
 
   return (
     <section id='about' className={`text-white w-full h-auto flex flex-col ${styles.paddingX}`} >
-      <motion.h1 className='self-center pb-[3rem] font-bold bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text'>About Me</motion.h1>
+      <motion.h1 className='self-center pb-[3rem] font-bold bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>About Me</motion.h1>
       <div className={`flex flex-row ${styles.paddingX} h-auto gap-[6rem] mx-auto`}>
         
         <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex ' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
@@ -20,7 +20,7 @@ const About = () => {
             <LuMouse className='animate-bounce '/>
             hover me
           </div>
-          <img  className=" rounded-lg absolute inset-y--2 inset-x-2 " src={portrait} alt='self-portrait' style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
+          <img  className=" rounded-lg absolute inset-y--2 inset-x-2 bg-indigo-500 shadow-lg shadow-indigo-500/50" src={portrait} alt='self-portrait' style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
         </motion.div>
 
         <div className='max-w-[30rem] min-w-[15rem] text-2xl'>
