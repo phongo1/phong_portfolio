@@ -7,6 +7,8 @@ module.exports = {
     'text-sky-800',
     'text-[#566af6]',
     'text-emerald-400',
+    'text-emerald-800',
+    'bg-emerald-200',
     'bg-green-200',
     'text-green-800',
     'bg-red-200',
@@ -19,10 +21,13 @@ module.exports = {
     'text-orange-800',
     'bg-lime-200',
     'text-lime-800',
+    'text-lime-300',
     'bg-pink-200',
     'text-pink-800',
     'bg-blue-200',
     'text-blue-800',
+    "bg-cyan-200",
+    "text-cyan-800"
   ],
   theme: {
     extend: {
