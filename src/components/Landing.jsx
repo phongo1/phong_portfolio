@@ -13,7 +13,7 @@ const Landing = () => {
     const timer = setTimeout(() => {
       setIsLoading(false);
       // Start the animation after the loader is set to exit
-      controls.start({ opacity: 1, transition: { duration: 1.75 } });
+      controls.start({ opacity: 1, transition: { type:'spring', stiffness:100, damping:10, duration: 1.75 } });
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -30,7 +30,7 @@ const Landing = () => {
     onScreen: {
       x: 0,
       opacity: 1,
-      transition: { type: "spring", stiffness: 300, damping: 30 },
+      transition: { type: "spring", stiffness: 200, damping: 30, duration: 2 },
     },
   };
 

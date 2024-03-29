@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion"
 
 import { MdEmail } from "react-icons/md";
 import { FaInstagram, FaLink } from "react-icons/fa6";
@@ -31,7 +32,11 @@ const Contact = () => {
         />
       </div>
 
-      <div className="flex gap-[3rem] flex-wrap py-5">
+      <motion.div className="flex gap-[3rem] flex-wrap py-5"
+        initial={{ y:0 }}
+        whileInView={{ y: [-25, 0] }}
+        transition={{ type: 'spring', stiffness: 100, damping:5, duration: 1 }}
+      >
         <a href="mailto:phongl.hoa@gmail.com" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300">
           <MdEmail />
         </a>
@@ -44,7 +49,7 @@ const Contact = () => {
         <a href="https://www.linkedin.com/in/phongle1x/" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300">
           <FaLinkedin />
         </a>
-      </div>
+      </motion.div>
       <div className=" w-full h-9 relative bottom-0 flex items-center justify-center gap-3">
         <span className="text-xs text-indigo-200">Built with</span>
         <FaReact className="text-indigo-200"/>
