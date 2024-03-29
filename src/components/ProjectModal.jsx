@@ -7,10 +7,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     event.stopPropagation();
   };
 
-  const PhotoGallery = () => {
+  const PhotoGallery = ({ project}) => {
     return (
       <div>
-
+        {project.map}
       </div>
     );
   };
