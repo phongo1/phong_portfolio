@@ -55,9 +55,7 @@ const Landing = () => {
       </motion.div>
 
       <div
-        className={`w-[45rem] h-[25rem] relative overflow-visible flex align-middle justify-center md:left-28 ${
-          isLoading ? "visibility-hidden" : ""
-        }`}
+        className={`w-[45rem] h-[25rem] relative overflow-visible flex align-middle justify-center md:left-28 hover:cursor-grabbing`}
       >
         <Spline scene="https://prod.spline.design/QAGyEAONPrAsk4Gv/scene.splinecode" />
         <div className="absolute mx-auto b w-60 h-80 top-[10%] shadow-2xl shadow-indigo-600/50 -z-10"></div>

@@ -27,7 +27,7 @@ const experiences = [
     iconBg: "white",
     date: "Summer 2024",
     points: [
-      "Incoming Intern for summer 2024",
+      "Incoming Intern for Summer 2024",
     ],
   },
   {
@@ -75,7 +75,7 @@ const projects = [
     image: assets.gradebuddy_logo,
     description:
       "An auto-grader tool built for students and faculty to automate manual grading of open-ended answers based on a rubric",
-    bulletPoints: [
+    photos: [
       "Dynamic question inputting (prompt, student-answer,max points, and rubric)",
       "Scores each question based on given question rubric",
       "Aggregates total score for an assigment after grading individual questions"
@@ -95,7 +95,7 @@ const projects = [
     image: assets.ss_logo,
     description:
       "An app-store published mobile app to streamline bill splitting by allowing users to scan a receipt, match friends to receipt items, and send Venmo requests accordingly with one click",
-    bulletPoints: [
+    photos: [
       "Utilized tesseract for receipt scanning (OCR)",
       "React Native for front-end mobile development",
       "Venmo API for payment processing",
@@ -119,7 +119,7 @@ const projects = [
     image: assets.pho_icon,
     description:
       "A multifaceted Discord Bot that can run autonomously, pull league of legends game data, send customized emails, search google,  tell random jokes, and more",
-    bulletPoints: [
+    photos: [
       "Built with Discord API, Riot API, googlesearch API, and BeautifulSoup for webscraping",
     ],
     skills: [
@@ -137,7 +137,7 @@ const projects = [
     image: assets.game_logo,
     description:
       "A 2D RPG inspired shooter-platformer game buitl with pygame and UVAGE (UVA game engine)",
-    bulletPoints: [],
+    photos: [],
     skills: [
       { name: "Python", color: "yellow" },
       { name: "Pygame", color: "red" },
@@ -152,7 +152,7 @@ const projects = [
     image: assets.joseweb_thumbnail,
     description:
       "A commisioned website for Jose, an author who was publishing a new book called \"Queen of Heaven\"",
-    bulletPoints: [],
+    photos: [],
     skills: [
       { name: "HTML/CSS", color: "cyan" },
       { name: "Javascript", color: "yellow" },

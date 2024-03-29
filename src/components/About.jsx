@@ -15,16 +15,16 @@ const About = () => {
       <motion.h1 className='self-center pb-[3rem] font-bold bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>About Me</motion.h1>
       <div className={`flex flex-row ${styles.paddingX} h-auto gap-[6rem] mx-auto`}>
         
-        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex ' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
+        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex hover:shadow-lg hover:shadow-indigo-500/50 transition-scale duration-200 ease-in-o' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
           <div className='absolute z-30 top-[-1rem] font-light text-gray-400 flex flex-row gap-1 items-center animate-pulse text-xs'>
             <LuMouse className='animate-bounce '/>
             hover me
           </div>
-          <img  className=" rounded-lg absolute inset-y--2 inset-x-2 bg-indigo-500 shadow-lg shadow-indigo-500/50" src={portrait} alt='self-portrait' draggable="false" style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
+          <img  className=" rounded-lg absolute inset-y--2 inset-x-2 bg-indigo-500 shadow-lg shadow-indigo-500/50 ut" src={portrait} alt='self-portrait' draggable="false" style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
         </motion.div>
 
         <div className='max-w-[30rem] min-w-[15rem] text-2xl'>
-          <p >Hello, I'm <b>Phong Le</b>, a second-year Computer Science student at the University of Virginia. </p>
+          <p>I'm a second-year Computer Science student at the University of Virginia. </p>
           <br></br>
           <p>Currently working toward a BSCS with a minor in applied mathematics. </p>
           <br></br>
