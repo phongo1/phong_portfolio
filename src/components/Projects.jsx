@@ -20,22 +20,25 @@ const Projects = () => {
 
   return (
     <div className={` w-full h-auto flex flex-col gap-20`} id="projects">
-      <motion.div className="w-full flex flex-col gap-8 mb-5">
+      <div className="w-full flex flex-col gap-8 mb-5">
         <h1
           className={`self-center pb-[1rem] font-bold text-center bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text`}
         >
           Projects.
         </h1>
-      </motion.div>
+      </div>
       <div className="w-full mx-auto gap-20 justify-center flex flex-row flex-wrap px-10 max-w-[90rem]">
         {projects.map((project) => (
-          <div
+          <motion.div
             key={project.id}
             onClick={() => openModal(project)}
             className="cursor-pointer"
+            initial={{  y: -75, opacity:0, }}
+            whileInView={{ y: 0, opacity:1,  }}
+            transition={{ duration: .5 }}
           >
             <ProjectCard project={project} />
-          </div>
+          </motion.div>
         ))}
       </div>
       <AnimatePresence>
