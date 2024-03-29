@@ -20,7 +20,7 @@ const About = () => {
             <LuMouse className='animate-bounce '/>
             hover me
           </div>
-          <img  className=" rounded-lg absolute inset-y--2 inset-x-2 bg-indigo-500 shadow-lg shadow-indigo-500/50 ut" src={portrait} alt='self-portrait' draggable="false" style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
+          <img  className=" rounded-lg absolute inset-y--2 inset-x-2 bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:cursor-move" src={portrait} alt='self-portrait' draggable="false" style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
         </motion.div>
 
         <div className='max-w-[30rem] min-w-[15rem] text-2xl'>
