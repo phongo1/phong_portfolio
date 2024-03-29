@@ -31,6 +31,7 @@ const About = () => {
         <motion.div className='max-w-[30rem] min-w-[15rem] text-2xl'
           initial= {{ x: 250, opacity: 0 }}
           whileInView= {{ x:0, opacity:1 }}
+          viewport={{ once: true }}
           transition={{ type: 'spring', stiffness: 35, damping:10, duration: .6 }}
         >
           <p>I'm a second-year Computer Science student at the University of Virginia. </p>
