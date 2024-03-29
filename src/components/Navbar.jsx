@@ -46,7 +46,7 @@ const Navbar = () => {
       if (section) {
         const rect = section.getBoundingClientRect();
         const isVisible =
-          rect.top - 200 < 0 && // Top of the section is within the viewport
+          rect.top - 150 < 0 && // Top of the section is within the viewport
           rect.bottom > 0; // Bottom of the section hasn't scrolled past the top edge
       
         const scrolledToBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight;
@@ -62,7 +62,7 @@ const Navbar = () => {
 
     if (
       newActive !== active &&
-      document.getElementById("about").getBoundingClientRect().y - 75 < 0
+      document.getElementById("about").getBoundingClientRect().y - 90 < 0
     ) {
       setActive(newActive);
     }
