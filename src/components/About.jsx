@@ -12,10 +12,15 @@ const About = () => {
 
   return (
     <section id='about' className={`text-white w-full h-auto flex flex-col ${styles.paddingX}`} >
-      <motion.h1 className='self-center pb-[3rem] font-bold bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>About Me</motion.h1>
+      <h1 className='self-center pb-[3rem] font-bold bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>About Me</h1>
       <div className={`flex flex-row ${styles.paddingX} h-auto gap-[6rem] mx-auto`}>
         
-        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex hover:shadow-lg hover:shadow-indigo-500/50 transition-scale duration-200 ease-in-o' style={{transformStyle: "preserve-3d", rotateX, rotateY}}>
+        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex hover:shadow-lg hover:shadow-indigo-500/50 transition-scale duration-200 ease-in-o' style={{transformStyle: "preserve-3d", rotateX, rotateY}}
+          initial= {{ x: -250, opacity: 0 }}
+          whileInView= {{ x:0, opacity:1 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 35, damping:10,  duration: .6 }}
+        >
           <div className='absolute z-30 top-[-1rem] font-light text-gray-400 flex flex-row gap-1 items-center animate-pulse text-xs'>
             <LuMouse className='animate-bounce '/>
             hover me
@@ -23,7 +28,11 @@ const About = () => {
           <img  className=" rounded-lg absolute inset-y--2 inset-x-2 bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:cursor-move" src={portrait} alt='self-portrait' draggable="false" style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
         </motion.div>
 
-        <div className='max-w-[30rem] min-w-[15rem] text-2xl'>
+        <motion.div className='max-w-[30rem] min-w-[15rem] text-2xl'
+          initial= {{ x: 250, opacity: 0 }}
+          whileInView= {{ x:0, opacity:1 }}
+          transition={{ type: 'spring', stiffness: 35, damping:10, duration: .6 }}
+        >
           <p>I'm a second-year Computer Science student at the University of Virginia. </p>
           <br></br>
           <p>Currently working toward a BSCS with a minor in applied mathematics. </p>
@@ -37,7 +46,7 @@ const About = () => {
               </div>
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

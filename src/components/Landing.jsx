@@ -14,7 +14,7 @@ const Landing = () => {
       setIsLoading(false);
       // Start the animation after the loader is set to exit
       controls.start({ opacity: 1, transition: { duration: 1.75 } });
-    }, 100);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [controls]);
@@ -26,7 +26,7 @@ const Landing = () => {
   };
 
   const typewriterVariants = {
-    offScreen: { x: -500, opacity: 0 }, // Start off-screen to the left
+    offScreen: { x: -550, opacity: 0 }, // Start off-screen to the left
     onScreen: {
       x: 0,
       opacity: 1,
