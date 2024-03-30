@@ -15,7 +15,7 @@ const About = () => {
       <h1 className='self-center pb-[3rem] font-bold bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text '>About Me</h1>
       <div className={`flex flex-row ${styles.paddingX} h-auto gap-[6rem] mx-auto`}>
         
-        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex hover:shadow-lg hover:shadow-indigo-500/50 transition-scale duration-200 ease-in-o' style={{transformStyle: "preserve-3d", rotateX, rotateY}}
+        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className='w-[20rem] h-[27rem] relative place-content-center rounded-xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] hidden xl:flex hover:shadow-lg hover:shadow-indigo-500/50 transition-scale duration-150' style={{transformStyle: "preserve-3d", rotateX, rotateY}}
           initial= {{ x: -250, opacity: 0 }}
           whileInView= {{ x:0, opacity:1 }}
           viewport={{ once: true }}
