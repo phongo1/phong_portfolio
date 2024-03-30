@@ -13,6 +13,10 @@
   overscroll-behavior: none;
 }
 
+#body {
+  overscroll-behavior: none;
+}
+
 /* HTML: <div class="loader"></div> */
 .loader {
   height: 4px;
