@@ -33,9 +33,9 @@ const Projects = () => {
             key={project.id}
             onClick={() => openModal(project)}
             className="cursor-pointer"
-            initial={{  y: -75, opacity:0, }}
-            whileInView={{ y: 0, opacity:1,  }}
-            transition={{ duration: .5 }}
+            initial={{  y: -75, opacity:0, scale:.8 }}
+            whileInView={{ y: 0, opacity:1, scale:1 }}
+            transition={{ duration: .4 }}
           >
             <ProjectCard project={project} />
           </motion.div>

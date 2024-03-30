@@ -1,7 +1,18 @@
-import React from "react";
+import { useEffect } from "react";
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
   if (!isOpen) return null;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      onClose();
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // cleanup function to remove the event listener
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [onClose]);
 
   const handleContentClick = (event) => {
     event.stopPropagation();
