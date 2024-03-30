@@ -88,7 +88,7 @@ const Navbar = ({ isLoading }) => {
   return (
     <motion.nav
       className={`${styles.paddingX} w-full h-[4.5rem] flex items-center py-5 fixed top-0 z-20 bg-dark-purple bg-cover bg-no-repeat bg-center`}
-      initial={{ y:-100 }}
+      initial={{ y:-50 }}
       animate={controls}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
