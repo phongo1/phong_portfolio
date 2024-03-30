@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
@@ -6,7 +6,7 @@ import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 
 const navbarAnimation = {
   hidden: {
@@ -29,9 +29,16 @@ const navbarAnimation = {
   },
 };
 
-const Navbar = () => {
+const Navbar = ({ isLoading }) => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (!isLoading) {
+      controls.start({ y: 0, transition: { type: 'spring', stiffness: 20, damping:5, duration: 1 } });
+    }
+  }, [isLoading, controls]);
 
   useScrollPosition(() => {
     let newActive = "";
@@ -79,8 +86,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav
+    <motion.nav
       className={`${styles.paddingX} w-full h-[4.5rem] flex items-center py-5 fixed top-0 z-20 bg-dark-purple bg-cover bg-no-repeat bg-center`}
+      initial={{ y:-100 }}
+      animate={controls}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -178,7 +187,7 @@ const Navbar = () => {
           </AnimatePresence>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
