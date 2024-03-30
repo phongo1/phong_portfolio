@@ -48,7 +48,7 @@ const Landing = ({ isLoading }) => {
         animate={controls}
       >
         <Spline scene="https://prod.spline.design/QAGyEAONPrAsk4Gv/scene.splinecode" />
-        <div className="absolute mx-auto bg-transparent w-60 h-80 top-[10%] shadow-[0_20px_75px_-15px_rgba(79,70,229,0.5)] -z-10"></div>
+        <div className="absolute mx-auto bg-transparent w-60 h-80 top-[10%] shadow-[0_20px_90px_-15px_rgba(79,70,229,0.5)] -z-10"></div>
       </motion.div>
     </section>
   );
