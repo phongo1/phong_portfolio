@@ -10,6 +10,7 @@
   flex-direction: column;
   gap: 12rem;
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 /* HTML: <div class="loader"></div> */
