@@ -24,7 +24,7 @@ const Landing = ({ isLoading }) => {
           className="pb-16 w-fit h-[25rem] flex flex-col justify-center align-center gap-2"
           initial={{ x:-250, opacity:0 }}
           animate={{ x:0, opacity:1 }}
-          transition={{ type: 'spring', stiffness: 30, damping:5, duration: 1 }}
+          transition={{ type: 'spring', stiffness: 80, damping:10, duration: 1 }}
         >
           <p className="text-4xl">Hello, I'm</p>
           <span className="font-bold text-6xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] text-transparent bg-clip-text ">

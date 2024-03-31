@@ -36,7 +36,7 @@ const Navbar = ({ isLoading }) => {
 
   useEffect(() => {
     if (!isLoading) {
-      controls.start({ y: 0, transition: { type: 'spring', stiffness: 20, damping:5, duration: 1 } });
+      controls.start({ y: 0, transition: { type: 'spring', stiffness: 80, damping:10, duration: .8 } });
     }
   }, [isLoading, controls]);
 
