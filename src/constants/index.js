@@ -48,7 +48,7 @@ const experiences = [
     iconBg: "#383E56",
     date: "Fall 2023",
     points: [
-      "Implemented front-end mobile user interfaces and functionality using React Native.",
+      "Implemented front-end mobile user interfaces and functionality using React Native",
       "Created and maintained robust and scalable RESTful APIs using Django REST framework, ensuring efficient data communication between front-end and back-end systems",
       "Tested API end points and database interactions with Postman",
     ],
@@ -60,8 +60,8 @@ const experiences = [
     iconBg: "#FFFF",
     date: "Summer 2023",
     points: [
-      "Led a team of 8 interns in training a Large Language Model to automate editing process of Non-Disclosure Agreements, reducing NDA review time by at least 60%.",
-      "Utilized Jira and Agile Development methodologies to streamline project workflows and team collaboration.",
+      "Led a team of 8 interns in training a Large Language Model to automate editing process of Non-Disclosure Agreements, reducing NDA review time by at least 60%",
+      "Utilized Jira and Agile Development methodologies to streamline project workflows and team collaboration",
       "Developed Python code utilizing Openai API to train 'DaVinci' language model on a data set of 250 attorney revised NDA's",
     ],
   },
@@ -136,7 +136,7 @@ const projects = [
     type: { name: "2D - Platformer Game", color: "emerald-400" },
     image: assets.game_logo,
     description:
-      "A 2D RPG inspired shooter-platformer game buitl with pygame and UVAGE (UVA game engine)",
+      "A 2D RPG inspired shooter-platformer game built with pygame and UVAGE (UVA game engine)",
     photos: [],
     skills: [
       { name: "Python", color: "yellow" },
