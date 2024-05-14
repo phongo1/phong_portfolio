@@ -34,8 +34,8 @@ const Contact = () => {
 
       <motion.div className="flex gap-[3rem] flex-wrap py-5"
         initial={{ y:0 }}
-        whileInView={{ y: [-25, 0] }}
-        transition={{ type: 'spring', stiffness: 100, damping:5, duration: 1 }}
+        whileInView={{ y: [-20, 0] }}
+        transition={{ type: 'spring', stiffness: 100, damping:4, duration: 1 }}
       >
         <a href="mailto:phongl.hoa@gmail.com" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300">
           <MdEmail />
