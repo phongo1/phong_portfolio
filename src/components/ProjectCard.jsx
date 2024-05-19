@@ -16,9 +16,9 @@ const ProjectCard = ({ project }) => {
           <i className={`text-${project.type.color} text-sm`}>
             {project.type.name}
           </i>
-          <h3 className="text-lg font-semibold mb-2 -mt-1">{project.name}</h3>
+          <h3 className="text-lg font-semibold mb-2 -mt-1 text-white">{project.name}</h3>
         </div>
-        <p className="text-[.8rem]">{project.description}</p>
+        <p className="text-[.8rem] text-white">{project.description}</p>
 
         <div className="flex flex-wrap aligns-center mt-4 gap-y-2 ">
           {project.skills.map((skill, index) => (
