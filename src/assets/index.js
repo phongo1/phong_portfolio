@@ -19,14 +19,6 @@ import gradebuddy2 from "./projectpics/gradebuddy2.png"
 import gradebuddy3 from "./projectpics/gradebuddy3.png"
 
 import simplisplit1 from "./projectpics/simplisplit1.png"
-import simplisplit2 from "./projectpics/simplisplit2.png"
-import simplisplit3 from "./projectpics/simplisplit3.png"
-import simplisplit4 from "./projectpics/simplisplit4.png"
-import simplisplit5 from "./projectpics/simplisplit5.png"
-import simplisplit6 from "./projectpics/simplisplit6.png"
-import simplisplit7 from "./projectpics/simplisplit7.png"
-import simplisplit8 from "./projectpics/simplisplit8.png"
-import simplisplit9 from "./projectpics/simplisplit9.png"
 
 import game1 from "./projectpics/game1.png"
 import game2 from "./projectpics/game2.png"
@@ -47,7 +39,7 @@ import phobot4 from "./projectpics/phobot4.png"
 // Project pic arrays
 const gradebuddy = [gradebuddy1, gradebuddy2, gradebuddy3]
 
-const simplisplit = [simplisplit1, simplisplit2, simplisplit3, simplisplit4, simplisplit5, simplisplit6, simplisplit7, simplisplit8, simplisplit9]
+const simplisplit = [ss_logo, simplisplit1]
 
 const game = [game1, game2, game3]
 

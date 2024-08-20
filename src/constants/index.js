@@ -95,14 +95,14 @@ const projects = [
     type: { name: "Mobile Application", color: "blue-400" },
     image: assets.ss_logo,
     description:
-      "An app-store published mobile app to streamline bill splitting by allowing users to scan a receipt, match friends to receipt items, and send Venmo requests accordingly with one click",
+      "A mobile app to streamline bill splitting by allowing users to scan a receipt, match friends to receipt items, and send Venmo requests accordingly with one click",
     photos: assets.simplisplit,
     bullets: [
       "Utilized tesseract for receipt scanning (OCR)",
       "React Native for front-end mobile development",
       "Venmo API for payment processing",
       "Firebase for user account database storage",
-      "Built custom API using Python Flask",
+      "Custom API built with Python Flask",
     ],
     skills: [
       { name: "React Native", color: "green" },
