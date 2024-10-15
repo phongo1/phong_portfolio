@@ -25,9 +25,11 @@ const experiences = [
     company_name: "Ellucian",
     icon: assets.ellucian_logo,
     iconBg: "white",
-    date: "Summer 2024",
+    date: "Summer 2024 - present",
     points: [
-      "Incoming Intern for Summer 2024",
+      "Collaborated in a 6-person scrum team to develop internal software services extending AWS and Azure AI capabilities into existing company products, increasing feature throughput by at least 30%",
+      "Constructed a data cache system using AWS Lambda & DynamoDB, reducing ERP API fetch latency by 96%",
+      "Developed a ”commenting” micro-service API with AWS, DocumentDB. and React, streamlining comment creation in 3 different company products with user permissions, file attachments, and comment replying"
     ],
   },
   {
@@ -37,8 +39,8 @@ const experiences = [
     iconBg: "white",
     date: "Fall 2023",
     points: [
-      "Integrated Large Language Models for accurately generating software and non-software specification with regular expressions",
-      " Constructed an internal database of RegEx conversions for LLM training using PyTorch to automate natural language to RegEx conversions",
+      "Fine-tuned Meta Llama2 LLM to accurately generate regular expressions representing written English requirements, significantly reducing English language ambiguity in written requirements",
+      "Constructed a foundational dataset of 200+ English to RegEx conversions for LLM training through PyTorch",
     ],
   },
   {
@@ -60,9 +62,8 @@ const experiences = [
     iconBg: "#FFFF",
     date: "Summer 2023",
     points: [
-      "Led a team of 8 interns in training a Large Language Model to automate editing process of Non-Disclosure Agreements, reducing NDA review time by at least 60%",
-      "Utilized Jira and Agile Development methodologies to streamline project workflows and team collaboration",
-      "Developed Python code utilizing Openai API to train 'DaVinci' language model on a data set of 250 attorney revised NDA's",
+      "Expanded front-end user experiences by 15% by developing and integrating mobile app interfaces with back-end functionality using React Native and Node",
+      "Developed, maintained, and tested RESTful APIs integrating with a PostgresSQL database using Django REST Framework and Postman",
     ],
   },
 ];
