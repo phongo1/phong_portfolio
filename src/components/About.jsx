@@ -34,11 +34,11 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ type: 'spring', stiffness: 35, damping:10, duration: .6 }}
         >
-          <p>I'm a second-year Computer Science student at the University of Virginia. </p>
+          <p>I'm a 3rd year Computer Science student at the University of Virginia. </p>
           <br></br>
-          <p>Currently working toward a BSCS with a minor in applied mathematics. </p>
+          <p>Currently working towards a BSCS with a minor in applied mathematics. </p>
           <br></br>
-          <p>I'm passionate about learning new technologies and making an impact.</p>
+          <p>I have a passion for learning and making an impact through software.</p>
           <div className='w-full h-auto flex mt-10 '>
             <a href={phong_resume} target='_blank' className='mx-auto' >
               <div className='flex flex-row h-auto w-auto  text-fuchsia-50 items-center gap-1 rounded-2xl  bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-3 py-1 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg'>

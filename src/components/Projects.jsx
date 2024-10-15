@@ -36,6 +36,7 @@ const Projects = () => {
             initial={{  y: -75, opacity:0, scale:.8 }}
             whileInView={{ y: 0, opacity:1, scale:1 }}
             transition={{ duration: .4 }}
+            viewport={{ once: true }}
           >
             <ProjectCard project={project} />
           </motion.div>
