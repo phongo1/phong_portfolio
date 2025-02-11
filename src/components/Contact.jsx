@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion"
 
 import { MdEmail } from "react-icons/md";
-import { FaInstagram, FaLink } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
@@ -37,16 +37,16 @@ const Contact = () => {
         whileInView={{ y: [-20, 0] }}
         transition={{ type: 'spring', stiffness: 115, damping:6, duration: 1 }}
       >
-        <a href="mailto:phongl.hoa@gmail.com" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300">
+        <a href="mailto:phongl.hoa@gmail.com" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300" rel="noreferrer">
           <MdEmail />
         </a>
-        <a href="https://www.instagram.com/phong.hle/?next=%2F&hl=en" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300">
+        <a href="https://www.instagram.com/phong.hle/?next=%2F&hl=en" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300" rel="noreferrer">
           <FaInstagram />
         </a>
-        <a href="https://github.com/phongo1" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300">
+        <a href="https://github.com/phongo1" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300" rel="noreferrer">
           <FaGithub />
         </a>
-        <a href="https://www.linkedin.com/in/phongle1x/" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300">
+        <a href="https://www.linkedin.com/in/phongle1x/" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300" rel="noreferrer">
           <FaLinkedin />
         </a>
       </motion.div>

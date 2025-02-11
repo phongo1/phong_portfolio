@@ -27,9 +27,10 @@ const experiences = [
     iconBg: "white",
     date: "Summer 2024 - present",
     points: [
-      "Collaborated in a 6-person scrum team to develop internal software services extending AWS and Azure AI capabilities into existing company products, increasing feature throughput by at least 30%",
-      "Constructed a data cache system using AWS Lambda & DynamoDB, reducing ERP API fetch latency by 96%",
-      "Developed a ”commenting” micro-service API with AWS, DocumentDB. and React, streamlining comment creation in 3 different company products with user permissions, file attachments, and comment replying"
+      "Developed a rich-text-editor integrated AI writing assistant serving 2900+ higher education institutions globally",
+      "Built a scalable multi-agent LLM infrastructure utilizing AWS Bedrock and Azure AI to generate dynamic context-aware language, reducing manual editing time by 30% and improving content delivery speed by 50%",
+      "Developed a ”commenting” micro-service API with AWS, DocumentDB. and React, streamlining comment creation in 3 different company products with user permissions, file attachments, and comment replying",
+      "Constructed a cloud-based cache system using AWS and DynamoDB, reducing enterprise API latency by 92%",
     ],
   },
   {
@@ -50,9 +51,9 @@ const experiences = [
     iconBg: "#383E56",
     date: "Fall 2023",
     points: [
+      "Implemented a mobile-app one-time password (OTP) authentication system using Node.js and Twillio API",
       "Implemented front-end mobile user interfaces and functionality using React Native",
       "Created and maintained robust and scalable RESTful APIs using Django REST framework, ensuring efficient data communication between front-end and back-end systems",
-      "Tested API end points and database interactions with Postman",
     ],
   },
   {
@@ -62,8 +63,9 @@ const experiences = [
     iconBg: "#FFFF",
     date: "Summer 2023",
     points: [
-      "Expanded front-end user experiences by 15% by developing and integrating mobile app interfaces with back-end functionality using React Native and Node",
-      "Developed, maintained, and tested RESTful APIs integrating with a PostgresSQL database using Django REST Framework and Postman",
+      "Led a team of 5 interns in training OpenAI’s 4o LLM to automate the editing process of Non-Disclosure Agreements, reducing attorney review time by 40% and increasing document processing efficiency by 50%",
+      "Organized and cleaned a dataset of 300+ revised documents, yielding a model validation token accuracy of 0.95",
+      "Built and deployed a web application using React and Vercel, allowing model integration into client’s workflow",
     ],
   },
 ];
