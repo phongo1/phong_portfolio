@@ -89,20 +89,30 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             </li>
           ))}
         </ul>
-        {project.link === null ? (
-          <span className="inline-block bg-blue-500 text-white p-2 mt-2 rounded">
-            Private Repo
-          </span>
-        ) : (
-          <a
-            href={project.link}
+        <div className="flex gap-3">
+          {project.link === null ? (
+            <span className="inline-block bg-[#4d52ff] text-white p-2 mt-2 rounded hover:cursor-not-allowed">
+              Private Repo
+            </span>
+          ) : (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-[#4d52ff] text-white p-2 mt-2 rounded hover:cursor-pointer hover:text-white"
+            >
+              GitHub Link
+            </a>
+          )}
+          {project.website ? <a
+            href={project.website}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-blue-500 text-white p-2 mt-2 rounded hover:cursor-pointer"
+            className="inline-block bg-[#4d52ff] text-white p-2 mt-2 rounded hover:cursor-pointer hover:text-white"
           >
-            GitHub Link
-          </a>
-        )}
+            Website
+          </a> : null}
+        </div>
         <button
           onClick={onClose}
           className="block ml-auto bg-red-500 text-white p-2 rounded"

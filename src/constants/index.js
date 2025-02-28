@@ -74,17 +74,17 @@ const projects = [
       "An auto-grader tool built for students and faculty to automate manual grading of open-ended answers based on a rubric",
     photos: assets.gradebuddy,
     bullets: [
-      "Dynamic question inputting (prompt, student-answer,max points, and rubric)",
-      "Scores each question based on given question rubric",
-      "Aggregates total score for an assigment after grading individual questions"
+      "Dynamic question inputting (prompt, student-answer, max points, and rubric)",
+      "LLM scores each question based on given question rubric",
+      "Aggregates total score for an assignment after grading individual questions"
     ],
     skills: [
       { name: "React.js", color: "cyan" },  
       { name: "Django", color: "emerald" },
       { name: "Firebase DB", color: "orange" },
     ],
-    link: "https://github.com/phongo1/gradebuddy",
-    video: "path/to/video1.mp4",
+    link: "https://github.com/brandonistfan/GradeBuddy",
+    website: "https://www.gradebuddy.app",
   },
   {
     id: 2,
