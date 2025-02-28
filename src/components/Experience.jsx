@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
+import PropTypes from 'prop-types';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -33,21 +35,21 @@ const ExperienceCard = ({ experience }) => {
       }
       className='hover:scale-105 transition ease-in-out duration-700'
     >
-      <div>
+      <div className='hover:cursor-grabbing'>
         <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
         <p
-          className='text-secondary text-[16px] font-semibold'
+          className='text-secondary text-[16px] font-semibold text-[#d8b4fe]'
           style={{ margin: 0 }}
         >
           {experience.company_name}
         </p>
       </div>
 
-      <ul className='mt-5 list-disc ml-5 space-y-2'>
+      <ul className='mt-3 list-disc ml-5 space-y-2'>
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            className='text-white-100 text-[14px] pl-1 tracking-normal'
           >
             {point}
           </li>
@@ -79,5 +81,14 @@ const Experience = () => {
     </div>
   )
 }
-
+ExperienceCard.propTypes = {
+  experience: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    iconBg: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    company_name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    points: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+};
 export default Experience

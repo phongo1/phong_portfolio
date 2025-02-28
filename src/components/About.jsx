@@ -28,15 +28,15 @@ const About = () => {
           <img  className=" rounded-lg absolute inset-y--2 inset-x-2 bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:cursor-move" src={portrait} alt='self-portrait' draggable="false" style={{ transform: "translateZ(20px)" ,transformStyle: "preserve-3d"}}></img>
         </motion.div>
 
-        <motion.div className='max-w-[30rem] min-w-[15rem] text-2xl'
+        <motion.div className='max-w-[32rem] min-w-[15rem] text-2xl'
           initial= {{ x: 250, opacity: 0 }}
           whileInView= {{ x:0, opacity:1 }}
           viewport={{ once: true }}
           transition={{ type: 'spring', stiffness: 35, damping:10, duration: .6 }}
         >
-          <p>I'm a 3rd year Computer Science student at the University of Virginia. </p>
+          <p>I'm a third year Computer Science student at the University of Virginia. </p>
           <br></br>
-          <p>Currently working towards a BSCS with a minor in applied mathematics. </p>
+          <p>I'm currently working towards a BSCS with a minor in applied mathematics. </p>
           <br></br>
           <p>I have a passion for learning and making an impact through software.</p>
           <div className='w-full h-auto flex mt-10 '>
