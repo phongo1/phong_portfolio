@@ -27,33 +27,28 @@ const experiences = [
     iconBg: "white",
     date: "Summer 2024 - present",
     points: [
-      "Developed a rich-text-editor integrated AI writing assistant serving 2900+ higher education institutions globally",
-      "Built a scalable multi-agent LLM infrastructure utilizing AWS Bedrock and Azure AI to generate dynamic context-aware language, reducing manual editing time by 30% and improving content delivery speed by 50%",
-      "Developed a ”commenting” micro-service API with AWS, DocumentDB. and React, streamlining comment creation in 3 different company products with user permissions, file attachments, and comment replying",
-      "Constructed a cloud-based cache system using AWS and DynamoDB, reducing enterprise API latency by 92%",
+      "Engineered full-stack Proof of Concepts, demonstrating feasibility of proposed enterprise solutions",
+      "Developed AI integrated software impacting 2000+ higher education institutions globally",
     ],
   },
   {
     title: "Undergraduate Researcher",
-    company_name: "UVA CS",
+    company_name: "UVA Computer Science",
     icon: assets.uva_cs,
     iconBg: "white",
     date: "Fall 2023",
     points: [
-      "Fine-tuned Meta Llama2 LLM to accurately generate regular expressions representing written English requirements, significantly reducing English language ambiguity in written requirements",
-      "Constructed a foundational dataset of 200+ English to RegEx conversions for LLM training through PyTorch",
+      "Worked closely with Professor Sebastian Elbaum to fine-tune Meta Llama2 LLM, automating natural language representing regex generation",
     ],
   },
   {
-    title: "Full Stack Software Developer Intern",
+    title: "Software Developer Intern",
     company_name: "Spotlist",
     icon: assets.spotlist,
     iconBg: "#383E56",
     date: "Fall 2023",
     points: [
-      "Implemented a mobile-app one-time password (OTP) authentication system using Node.js and Twillio API",
-      "Implemented front-end mobile user interfaces and functionality using React Native",
-      "Created and maintained robust and scalable RESTful APIs using Django REST framework, ensuring efficient data communication between front-end and back-end systems",
+      "Worked in an agile team of 8 to develop a full-stack mobile application facilitating cosmetic services",
     ],
   },
   {
@@ -63,8 +58,7 @@ const experiences = [
     iconBg: "#FFFF",
     date: "Summer 2023",
     points: [
-      "Led a team of 5 interns in training OpenAI’s 4o LLM to automate the editing process of Non-Disclosure Agreements, reducing attorney review time by 40% and increasing document processing efficiency by 50%",
-      "Organized and cleaned a dataset of 300+ revised documents, yielding a model validation token accuracy of 0.95",
+      "Led a team of 5 interns to train OpenAI’s 4o LLM, automating the editing process of Non-Disclosure Agreements",
       "Built and deployed a web application using React and Vercel, allowing model integration into client’s workflow",
     ],
   },
@@ -105,7 +99,6 @@ const projects = [
       "React Native for front-end mobile development",
       "Venmo API for payment processing",
       "Firebase for user account database storage",
-      "Custom API built with Python Flask",
     ],
     skills: [
       { name: "React Native", color: "green" },
