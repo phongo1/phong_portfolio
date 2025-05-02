@@ -59,7 +59,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="bg-white py-4 px-9 rounded-lg mx-auto max-w-5xl min-w-96 z-[999] absolute top-[4.5rem] border-1 border-black w-[50rem] overflow-hidden"
+        className="bg-white py-4 px-9 rounded-lg mx-auto max-w-4xl z-[999] absolute top-[4.5rem] border border-black w-[90%] sm:w-[20rem] md:w-[30rem] lg:w-[50rem] overflow-auto"
         onClick={handleContentClick} // Prevents modal close when clicking on the content
       >
         <h2 className="text-xl font-bold text-black mb-4 text-center">
