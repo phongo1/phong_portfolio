@@ -59,7 +59,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="bg-white py-4 px-9 rounded-lg mx-auto max-w-5xl min-w-96 z-[999] absolute top-[4.5rem] border-1 border-black max-w-[95%] overflow-hidden"
+        className="bg-white py-4 px-9 rounded-lg mx-auto max-w-5xl min-w-96 z-[999] absolute top-[4.5rem] border-1 border-black w-[50rem] overflow-hidden"
         onClick={handleContentClick} // Prevents modal close when clicking on the content
       >
         <h2 className="text-xl font-bold text-black mb-4 text-center">
@@ -101,7 +101,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               rel="noopener noreferrer"
               className="inline-block bg-[#4d52ff] text-white p-2 mt-2 rounded hover:cursor-pointer hover:text-white"
             >
-              GitHub Link
+              Link
             </a>
           )}
           {project.website ? <a

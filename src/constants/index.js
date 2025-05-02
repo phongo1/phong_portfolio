@@ -22,13 +22,23 @@ export const navLinks = [
 const experiences = [
   {
     title: "Software Engineer Intern",
+    company_name: "Appian",
+    icon: assets.appian,
+    iconBg: "white",
+    date: "Summer 2025",
+    points: [
+      "Incoming summer 2025 intern",
+    ],
+  },
+  {
+    title: "Software Engineer Intern",
     company_name: "Ellucian",
     icon: assets.ellucian_logo,
     iconBg: "white",
     date: "Summer 2024 - present",
     points: [
       "Engineered full-stack Proof of Concepts, demonstrating feasibility of proposed enterprise solutions",
-      "Developed AI integrated software impacting 2000+ higher education institutions globally",
+      "Developed an AI-powered writing assistant serving higher education institutions",
     ],
   },
   {
@@ -38,17 +48,7 @@ const experiences = [
     iconBg: "white",
     date: "Fall 2023",
     points: [
-      "Worked closely with Professor Sebastian Elbaum to fine-tune Meta Llama2 LLM, automating natural language representing regex generation",
-    ],
-  },
-  {
-    title: "Software Developer Intern",
-    company_name: "Spotlist",
-    icon: assets.spotlist,
-    iconBg: "#383E56",
-    date: "Fall 2023",
-    points: [
-      "Worked in an agile team of 8 to develop a full-stack mobile application facilitating cosmetic services",
+      "Worked closely with Professor Sebastian Elbaum to fine-tune Meta Llama2 LLM, automating natural language to regex conversions",
     ],
   },
   {
@@ -66,7 +66,6 @@ const experiences = [
 
 const projects = [
   {
-    id: 1,
     name: "GradeBuddy",
     type: { name: "Web Application", color: "lime-300" },
     image: assets.gradebuddy_logo,
@@ -87,7 +86,6 @@ const projects = [
     website: "https://www.gradebuddy.app",
   },
   {
-    id: 2,
     name: "SimpliSplit",
     type: { name: "Mobile Application", color: "blue-400" },
     image: assets.ss_logo,
@@ -111,12 +109,34 @@ const projects = [
     video: "path/to/video1.mp4",
   },
   {
-    id: 3,
+    name: "NutriFit",
+    type: { name: "Web Application", color: "blue-400" },
+    image: assets.nutrifitLogo,
+    description:
+      "A web app that helps users achieve their fitness or dietary goals by recommending grocery products based on nutrient compatibility and personalized ratings.",
+    photos: assets.nutrifit,
+    bullets: [
+      "Allows users to select goals like bulking, cutting, keto, or diabetic and recommends products accordingly",
+      "Integrates Kroger's Product API to fetch grocery items and Nutritionix API to retrieve detailed nutritional data",
+      "Implements a custom Nutrition Rating algorithm to rank products based on user goals",
+      "Enables users to save selected items for later comparison and planning",
+    ],
+    skills: [
+      { name: "React.js", color: "cyan" },
+      { name: "Express.js", color: "emerald" },
+      { name: "TypeScript", color: "blue" },
+      { name: "Kroger API", color: "orange" },
+      { name: "Nutritionix API", color: "yellow" },
+    ],
+    link: "https://github.com/phongo1/NutriFit",
+    video: "path/to/video.mp4", // Replace with actual video path
+  },
+  {
     name: "Phobot",
     type: { name: "Discord Bot", color: "[#566af6]" },
     image: assets.pho_icon,
     description:
-      "A multifaceted Discord Bot that can run autonomously, pull league of legends game data, send customized emails, search google,  tell random jokes, and more",
+      "A multifaceted Discord Bot that can run autonomously, pull game data, send customized emails, search google, tell random jokes, and more",
     photos: assets.phobot,
     bullets: [
       "Built with Discord API, Riot API, googlesearch API, and BeautifulSoup for webscraping",
@@ -124,20 +144,19 @@ const projects = [
     skills: [
       { name: "Python", color: "yellow" },
       { name: "Discord API", color: "blue" },
-      { name: "Web Scraping", color: "orange" },
+      { name: "Google API", color: "orange" },
     ],
     link: "https://github.com/phongo1/discord_bot",
     video: "path/to/video1.mp4",
   },
   {
-    id: 4,
-    name: "Fantasy Shooter",
-    type: { name: "2D - Platformer Game", color: "emerald-400" },
+    name: "Fantasy Game",
+    type: { name: "2D - Arena Game", color: "emerald-400" },
     image: assets.game_logo,
     description:
       "A 2D RPG inspired shooter-platformer game built with pygame and UVAGE (UVA game engine)",
     photos: assets.game,
-    bullets: [],
+    bullets: ['Final project for CS 1110 (Intro to Programming)'],
     skills: [
       { name: "Python", color: "yellow" },
       { name: "Pygame", color: "red" },
@@ -146,14 +165,13 @@ const projects = [
     video: "https://www.youtube.com/watch?v=FLIzubXNmyo&ab_channel=PhongLe",
   },
   {
-    id: 5,
     name: "Jose's Website",
     type: { name: "Website", color: "lime-300" },
     image: assets.joseweb_thumbnail,
     description:
-      "A commisioned website for Jose, an author who was publishing a new book called \"Queen of Heaven\"",
+      "A commisioned website for Jose, an author publishing a book called \"Queen of Heaven\"",
     photos: assets.website,
-    bullets: [],
+    bullets: [ 'A simple website to showcase the book and author - built with HTML/CSS/JS and deployed with Github Pages' ],
     skills: [
       { name: "HTML/CSS", color: "cyan" },
       { name: "Javascript", color: "yellow" },
@@ -161,6 +179,6 @@ const projects = [
     link: "https://github.com/phongo1/phongo1.github.io",
     video: "https://www.youtube.com/watch?v=FLIzubXNmyo&ab_channel=PhongLe",
   },
-];
+].map((project, index) => ({ ...project, id: index + 1 }));
 
 export { experiences, projects };
