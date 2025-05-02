@@ -3,7 +3,7 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 import portrait from "./portrait.png"
 import phong_resume from "./phongle_resume.pdf"
-import spotlist from "./spotlist_logo.png"
+import appian from "./appian_logo.png"
 import aipi from "./aipi_logo.png"
 import uva_cs from "./uva_cs_logo.png"
 import ss_logo from "./ss_logo.png"
@@ -34,7 +34,15 @@ import phobot2 from "./projectpics/phobot2.png"
 import phobot3 from "./projectpics/phobot3.png"
 import phobot4 from "./projectpics/phobot4.png"
 
-
+import nutrifitLogo from "./nutrifit_logo.jpg";
+import nutrifit1 from "./projectpics/nutrifit1.png";
+import nutrifit2 from "./projectpics/nutrifit2.png";
+import nutrifit3 from "./projectpics/nutrifit3.png";
+import nutrifit4 from "./projectpics/nutrifit4.png";
+import nutrifit5 from "./projectpics/nutrifit5.png";
+import nutrifit6 from "./projectpics/nutrifit6.png";
+import nutrifit7 from "./projectpics/nutrifit7.png";
+import nutrifit8 from "./projectpics/nutrifit8.png";
 
 // Project pic arrays
 const gradebuddy = [gradebuddy1, gradebuddy2, gradebuddy3]
@@ -47,6 +55,7 @@ const website = [website1, website2, website3, website4]
 
 const phobot = [phobot1, phobot2, phobot3, phobot4]
 
+const nutrifit = [nutrifit1, nutrifit2, nutrifit3, nutrifit4, nutrifit5, nutrifit6, nutrifit7, nutrifit8];
 
 export {
     logo,
@@ -54,7 +63,7 @@ export {
     close,
     portrait,
     phong_resume,
-    spotlist,
+    appian,
     aipi,
     uva_cs,
     ss_logo,
@@ -64,9 +73,11 @@ export {
     joseweb_thumbnail,
     beach_portrait,
     ellucian_logo,
+    nutrifitLogo,
     gradebuddy,
     simplisplit,
     game,
     website,
-    phobot
+    phobot,
+    nutrifit,
 };
