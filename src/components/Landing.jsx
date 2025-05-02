@@ -1,6 +1,6 @@
-import { React, useState, useEffect } from "react";
+import { useEffect } from "react";
 import Typewriter from "typewriter-effect";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import Spline from "@splinetool/react-spline";
 
 import { styles } from "../styles";
