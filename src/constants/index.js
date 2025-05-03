@@ -35,7 +35,7 @@ const experiences = [
     company_name: "Ellucian",
     icon: assets.ellucian_logo,
     iconBg: "white",
-    date: "Summer 2024 - present",
+    date: "Summer 2024 - Spring 2025",
     points: [
       "Engineered full-stack Proof of Concepts, demonstrating feasibility of proposed enterprise solutions",
       "Developed an AI-powered writing assistant serving higher education institutions",
