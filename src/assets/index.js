@@ -12,7 +12,7 @@ import game_logo from "./game_logo.png"
 import gradebuddy_logo from "./gradebuddy_logo.png"
 import joseweb_thumbnail from "./joseweb_thumbnail.png"
 import beach_portrait from "./portrait_beach.jpg"
-import ellucian_logo from "./ellucian_logo.jpg"
+import ellucian_logo from "./ellucian_logo.png"
 
 import gradebuddy1 from "./projectpics/gradebuddy1.png"
 import gradebuddy2 from "./projectpics/gradebuddy2.png"
