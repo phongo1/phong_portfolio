@@ -28,7 +28,7 @@ const experiences = [
     date: "Summer 2025",
     points: [
       "Contributed to a core infrastructure team streamlining Infrastructure-as-Code provisioning, networking services, and Okta",
-      "Integrated Teleport, a secure access platform, to enable compliant and efficient access management to AWS and customer-facing infra",
+      "Integrated Teleport, a secure access platform, to enable compliant and efficient access management to AWS and customer apps",
     ],
   },
   {
