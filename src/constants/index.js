@@ -27,7 +27,8 @@ const experiences = [
     iconBg: "white",
     date: "Summer 2025",
     points: [
-      "Incoming summer 2025 intern",
+      "Contributed to a core infrastructure team delivering Infrastructure-as-Code provisioning, networking services, and Okta integration",
+      "Integrated Teleport, a secure access platform, to enable compliant and efficient access management to AWS and customer-facing infra",
     ],
   },
   {
