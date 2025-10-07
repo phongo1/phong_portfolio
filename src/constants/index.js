@@ -27,7 +27,7 @@ const experiences = [
         iconBg: "white",
         date: "Fall 2025 - Present",
         points: [
-            "Maintained and developed a Next.js + Prisma flood risk monitoring and prediction platform services 50+ provinces in Vietnam",
+            "Maintained and developed a Next.js + Prisma flood risk monitoring and prediction platform servicing 50+ provinces in Vietnam",
         ],
     },
     {
