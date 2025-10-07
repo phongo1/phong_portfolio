@@ -34,9 +34,9 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ type: 'spring', stiffness: 35, damping:10, duration: .6 }}
         >
-          <p>I'm a third year Computer Science student at the University of Virginia. </p>
+          <p>I'm a fourth year Computer Science student at the University of Virginia. </p>
           <br></br>
-          <p>I'm currently working towards a BSCS with a minor in applied mathematics. </p>
+          <p>I'm wrapping up a BSCS with a minor in applied mathematics. </p>
           <br></br>
           <p>I have a passion for learning and making an impact through software.</p>
           <div className='w-full h-auto flex mt-10 '>
