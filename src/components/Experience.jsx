@@ -33,7 +33,7 @@ const ExperienceCard = ({ experience }) => {
           />
         </div>
       }
-      className='hover:scale-105 transition ease-in-out duration-700'
+      className='hover:scale-105 transition ease-in-out duration-500'
     >
       <div className='hover:cursor-grabbing'>
         <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>

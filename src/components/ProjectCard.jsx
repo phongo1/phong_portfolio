@@ -1,6 +1,6 @@
 const ProjectCard = ({ project }) => {
   return (
-    <div className="bg-[#1d1836] rounded-lg overflow-hidden hover:scale-110 hover:shadow-xl hover:shadow-indigo-600/50 transition-scale duration-300 ease-in-out w-[18rem] md:w-[22rem] flex flex-col items-center gap-4 shadow-md shadow-indigo-600/50">
+    <div className="bg-[#1d1836] rounded-lg overflow-hidden hover:scale-110 hover:shadow-xl hover:shadow-indigo-600/50 transition-scale duration-200 ease-in-out w-[18rem] md:w-[22rem] flex flex-col items-center gap-4 shadow-md shadow-indigo-600/50">
       <div className="w-full h-44 bg-white rounded-t-md overflow-hidden flex justify-center items-center ">
         <img
           src={project.image}
