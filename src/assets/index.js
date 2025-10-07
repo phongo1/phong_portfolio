@@ -13,6 +13,8 @@ import gradebuddy_logo from "./gradebuddy_logo.png"
 import joseweb_thumbnail from "./joseweb_thumbnail.png"
 import beach_portrait from "./portrait_beach.jpg"
 import ellucian_logo from "./ellucian_logo.png"
+import tCF_logo from "./tCF_logo.png"
+import floodwatch_logo from "./floodwatch_logo.png"
 
 import gradebuddy1 from "./projectpics/gradebuddy1.png"
 import gradebuddy2 from "./projectpics/gradebuddy2.png"
@@ -73,6 +75,8 @@ export {
     joseweb_thumbnail,
     beach_portrait,
     ellucian_logo,
+    tCF_logo,
+    floodwatch_logo,
     nutrifitLogo,
     gradebuddy,
     simplisplit,
