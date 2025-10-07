@@ -58,8 +58,8 @@ const experiences = [
         iconBg: "white",
         date: "Summer 2024 - Spring 2025",
         points: [
-            "Engineered full-stack Proof of Concepts, demonstrating feasibility of proposed enterprise solutions",
-            "Developed an AI-powered writing assistant serving higher education institutions",
+            "[SUMMER]: Engineered Proof of Concepts within a Solutions Architecture Team to demonstrate feasibility of proposed enterprise solutions",
+            "[FALL + SPRING]: Developed an AI-powered writing assistant serving higher education institutions and scalable AI infrastructure for integrating AI into existing SaaS",
         ],
     },
     {
