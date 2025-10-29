@@ -39,7 +39,7 @@ const About = () => {
           <p>I'm wrapping up a BSCS with a minor in applied mathematics. </p>
           <br></br>
           <p>I have a passion for learning and making an impact through software.</p>
-          <div className='w-full h-auto flex mt-10 '>
+          <div className='w-full h-auto flex mt-14 '>
             <a href={phong_resume} target='_blank' className='mx-auto' rel="noreferrer" >
               <div className='flex flex-row h-auto w-auto  text-fuchsia-50 items-center gap-1 rounded-2xl  bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-3 py-1 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg'>
                 <IoIosPaperPlane />

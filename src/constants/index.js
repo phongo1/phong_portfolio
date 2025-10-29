@@ -22,12 +22,13 @@ export const navLinks = [
 const experiences = [
     {
         title: "Software Engineer",
-        company_name: "FloodWatch",
+        company_name: "UVA Engineering Link Lab",
         icon: assets.floodwatch_logo,
         iconBg: "white",
         date: "Fall 2025 - Present",
         points: [
-            "Maintained and developed a Next.js + Prisma flood risk monitoring and prediction platform servicing 50+ provinces in Vietnam",
+            "Building www.floodwatch.io",
+            "A Next.js + Prisma flood risk prediction platform increasing flood warning across Vietnam",
         ],
     },
     {
@@ -37,7 +38,8 @@ const experiences = [
         iconBg: "white",
         date: "Fall 2025 - Present",
         points: [
-            "Maintained a Python/Django course and instructor review platform supporting 18,000+ UVA students every semester",
+            "Maintaining thecourseforum.com",
+            "A Python/Django course review platform supporting 18,000+ UVA students every semester",
         ],
     },
     {
