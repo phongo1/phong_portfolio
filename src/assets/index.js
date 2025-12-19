@@ -45,6 +45,7 @@ import nutrifit5 from "./projectpics/nutrifit5.png";
 import nutrifit6 from "./projectpics/nutrifit6.png";
 import nutrifit7 from "./projectpics/nutrifit7.png";
 import nutrifit8 from "./projectpics/nutrifit8.png";
+import avatarFallback from "./avatar-fallback.png";
 
 // Project pic arrays
 const gradebuddy = [gradebuddy1, gradebuddy2, gradebuddy3]
@@ -84,4 +85,5 @@ export {
     website,
     phobot,
     nutrifit,
+    avatarFallback,
 };
