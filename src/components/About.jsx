@@ -1,14 +1,48 @@
-import React from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { motion } from "framer-motion";
 import { IoIosPaperPlane } from "react-icons/io";
 import { LuMouse } from "react-icons/lu";
-
+import { IoImagesOutline } from "react-icons/io5";
 
 import { styles } from '../styles'
 import { portrait, phong_resume } from '../assets';
 import { useCardTilt } from './cardTilt.jsx'
+
+const PhotoGalleryModal = lazy(() => import('./PhotoGalleryModal.jsx'))
+
 const About = () => {
   const { rotateX, rotateY, handleMouseMove, handleMouseLeave } = useCardTilt();
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [galleryPhotos, setGalleryPhotos] = useState([]);
+  const [isGalleryLoading, setIsGalleryLoading] = useState(false);
+  const [hasLoadedGallery, setHasLoadedGallery] = useState(false);
+  const [shouldMountGallery, setShouldMountGallery] = useState(false);
+
+  useEffect(() => {
+    if (!isGalleryOpen || hasLoadedGallery) return;
+
+    let isMounted = true;
+    setIsGalleryLoading(true);
+
+    import('../utils/gallery')
+      .then(({ loadGalleryPhotos }) => loadGalleryPhotos())
+      .then((photos) => {
+        if (isMounted) setGalleryPhotos(photos);
+      })
+      .catch(() => {
+        if (isMounted) setGalleryPhotos([]);
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsGalleryLoading(false);
+          setHasLoadedGallery(true);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [isGalleryOpen, hasLoadedGallery]);
 
   return (
     <section id='about' className={`text-white w-full h-auto flex flex-col ${styles.paddingX}`} >
@@ -40,15 +74,39 @@ const About = () => {
           <br></br>
           <p>I have a passion for learning and making an impact through software.</p>
           <div className='w-full h-auto flex mt-14 '>
-            <a href={phong_resume} target='_blank' className='mx-auto' rel="noreferrer" >
-              <div className='flex flex-row h-auto w-auto  text-fuchsia-50 items-center gap-1 rounded-2xl  bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-3 py-1 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg'>
-                <IoIosPaperPlane />
-                Resume
-              </div>
-            </a>
+            <div className='mx-auto flex flex-nowrap items-center gap-7 sm:gap-16'>
+              <a href={phong_resume} target='_blank' rel="noreferrer" >
+                <div className='flex flex-row h-auto w-auto text-fuchsia-50 items-center gap-1 rounded-2xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-2 py-2 text-lg leading-none sm:px-3 sm:py-1 sm:text-2xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg whitespace-nowrap'>
+                  <IoIosPaperPlane />
+                  Resume
+                </div>
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  setShouldMountGallery(true);
+                  setIsGalleryOpen(true);
+                }}
+                aria-label="Open photo gallery"
+                className='flex flex-row h-auto w-auto text-fuchsia-50 items-center gap-1 rounded-2xl bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] px-2 py-2 text-lg leading-none sm:px-3 sm:py-1 sm:text-2xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg border-0 hover:border-0 whitespace-nowrap'
+              >
+                <IoImagesOutline />
+                Gallery
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>
+      <Suspense fallback={null}>
+        {shouldMountGallery ? (
+          <PhotoGalleryModal
+            isOpen={isGalleryOpen}
+            onClose={() => setIsGalleryOpen(false)}
+            photos={galleryPhotos}
+            isLoading={isGalleryLoading}
+          />
+        ) : null}
+      </Suspense>
     </section>
   )
 }
