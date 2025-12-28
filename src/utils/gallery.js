@@ -91,7 +91,7 @@ const galleryMeta = {
         date: "2025-08-09",
     },
     "seasideBakery.jpeg": {
-        description: "seaside bakery in cali #04 #keshi #stussy",
+        description: "seaside bakery in cali #keshi #stussy",
         date: "2025-03-11",
     },
     "steaksInMiami.jpeg": {

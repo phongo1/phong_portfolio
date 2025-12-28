@@ -269,7 +269,7 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
                         className="w-full max-h-[55vh] object-contain"
                       />
                       {drawerPhoto.date ? (
-                        <span className="pointer-events-none absolute left-3 top-3 rounded-md bg-black/70 px-2 py-1 text-[0.65rem] text-white/90">
+                        <span className="pointer-events-none absolute left-3 top-3 rounded-md bg-black/70 px-2 py-1 text-sm text-white/90">
                           {drawerPhoto.date}
                         </span>
                       ) : null}
