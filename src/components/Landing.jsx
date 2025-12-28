@@ -1,4 +1,4 @@
-import { Component, useEffect, useState } from "react";
+import { Component, useEffect, useRef, useState } from "react";
 import Typewriter from "typewriter-effect";
 import { motion, useAnimation } from "framer-motion";
 import Spline from "@splinetool/react-spline";
@@ -43,9 +43,16 @@ class SplineErrorBoundary extends Component {
   }
 }
 
-const Landing = ({ isLoading }) => {
+const Landing = ({ isLoading, onSplineReady }) => {
   const controls = useAnimation();
   const [webglSupported, setWebglSupported] = useState(null);
+  const splineReadyRef = useRef(false);
+
+  const signalSplineReady = () => {
+    if (splineReadyRef.current) return;
+    splineReadyRef.current = true;
+    if (onSplineReady) onSplineReady();
+  };
 
   useEffect(() => {
     if (!isLoading) {
@@ -56,6 +63,12 @@ const Landing = ({ isLoading }) => {
   useEffect(() => {
     setWebglSupported(checkWebGLSupport());
   }, []);
+
+  useEffect(() => {
+    if (webglSupported === false) {
+      signalSplineReady();
+    }
+  }, [webglSupported]);
 
   const fallbackScene = (
     <div className="w-full h-full relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_90px_-15px_rgba(79,70,229,0.35)]">
@@ -111,8 +124,17 @@ const Landing = ({ isLoading }) => {
         )}
         {webglSupported === false && fallbackScene}
         {webglSupported === true && (
-          <SplineErrorBoundary fallback={fallbackScene} onError={() => setWebglSupported(false)}>
-            <Spline scene="https://prod.spline.design/QAGyEAONPrAsk4Gv/scene.splinecode" />
+          <SplineErrorBoundary
+            fallback={fallbackScene}
+            onError={() => {
+              setWebglSupported(false);
+              signalSplineReady();
+            }}
+          >
+            <Spline
+              scene="https://prod.spline.design/QAGyEAONPrAsk4Gv/scene.splinecode"
+              onLoad={signalSplineReady}
+            />
             <div className="absolute mx-auto bg-transparent w-60 h-80 top-[10%] shadow-[0_20px_90px_-15px_rgba(79,70,229,0.5)] -z-10"></div>
           </SplineErrorBoundary>
         )}

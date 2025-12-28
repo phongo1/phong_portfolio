@@ -15,7 +15,8 @@ import {
 import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isBootReady, setIsBootReady] = useState(false);
+  const [isSplineReady, setIsSplineReady] = useState(false);
 
   const loaderVariants = {
     hidden: { opacity: 0 },
@@ -24,9 +25,11 @@ const App = () => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000);
+    const timer = setTimeout(() => setIsBootReady(true), 1000);
     return () => clearTimeout(timer);
   }, []);
+
+  const isLoading = !isBootReady || !isSplineReady;
 
   return (
     <BrowserRouter>
@@ -39,7 +42,7 @@ const App = () => {
         )}
       </AnimatePresence>
       <Navbar isLoading={isLoading} />
-      <Landing isLoading={isLoading} />
+      <Landing isLoading={isLoading} onSplineReady={() => setIsSplineReady(true)} />
       <About />
       <Experience />
       <Projects />
