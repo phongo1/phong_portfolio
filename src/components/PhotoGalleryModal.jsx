@@ -132,9 +132,9 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
       }}
       transition={{ duration: 0.10, ease: "easeOut" }}
     >
-      <div className={`relative inline-flex transition-transform duration-200 ease-out ${drawerOpen ? "sm:-translate-x-6 lg:-translate-x-8" : ""}`}>
+      <div className={`relative w-full max-w-5xl sm:max-w-[44rem] transition-transform duration-200 ease-out ${drawerOpen ? "sm:-translate-x-6 lg:-translate-x-8" : ""}`}>
         <motion.div
-          className="w-full max-w-5xl h-[85vh] max-h-[85vh] min-h-[32rem] overflow-hidden rounded-3xl border border-white/10 bg-[#0f111a] shadow-md flex flex-col sm:max-w-[44rem]"
+          className="w-full h-[85vh] max-h-[85vh] min-h-[32rem] overflow-hidden rounded-3xl border border-white/10 bg-[#0f111a] shadow-md flex flex-col"
           onClick={handleContentClick}
           variants={{
             open: { opacity: 1 },
