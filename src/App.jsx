@@ -29,6 +29,11 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsSplineReady(true), 6000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   const isLoading = !isBootReady || !isSplineReady;
 
   return (
