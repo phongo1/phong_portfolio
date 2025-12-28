@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { IoClose } from "react-icons/io5";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -55,16 +56,43 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 z-[99] flex justify-center items-center h-screen"
+      className="fixed inset-0 z-[99] flex items-center justify-center bg-black/50 p-4"
       onClick={onClose}
     >
       <div
-        className="bg-white py-4 px-9 rounded-lg mx-auto max-w-4xl z-[999] absolute top-[4.5rem] border border-black w-[90%] sm:w-[20rem] md:w-[30rem] lg:w-[50rem] overflow-auto"
+        className="project-modal relative w-full max-w-4xl overflow-auto rounded-3xl border border-white/10 bg-[#0f111a] px-6 py-6 text-white shadow-md sm:px-8 sm:py-8 max-h-[85vh]"
         onClick={handleContentClick} // Prevents modal close when clicking on the content
       >
-        <h2 className="text-xl font-bold text-black mb-4 text-center">
-          {project.name}
-        </h2>
+        <style>{`
+          .project-modal .slick-dots li button:before {
+            color: rgba(255, 255, 255, 0.5);
+            opacity: 1;
+          }
+          .project-modal .slick-dots li.slick-active button:before {
+            color: rgba(255, 255, 255, 0.9);
+          }
+          .project-modal .slick-prev:before,
+          .project-modal .slick-next:before {
+            color: rgba(255, 255, 255, 0.8);
+          }
+          .project-modal .slick-prev:hover:before,
+          .project-modal .slick-next:hover:before {
+            color: rgba(255, 255, 255, 1);
+          }
+        `}</style>
+          <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
+            <h2 className="text-xl font-semibold tracking-wide text-white sm:text-2xl">
+              {project.name}
+            </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close project details"
+            className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:text-white"
+          >
+            <IoClose className="h-4 w-4" />
+          </button>
+        </div>
         <div className="slider-container my-6 px-4 flex justify-center">
           <Slider {...settings} className=" w-[30rem] h-[20rem] p-0">
             {project.photos.map((photo, index) => (
@@ -82,9 +110,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           </Slider>
         </div>
 
-        <ul className="list-disc pl-5 py-2">
+        <ul className="list-disc pl-5 py-2 text-white/80">
           {project.bullets.map((point, index) => (
-            <li key={index} className="text-gray-600">
+            <li key={index}>
               {point}
             </li>
           ))}
@@ -113,12 +141,6 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             Website
           </a> : null}
         </div>
-        <button
-          onClick={onClose}
-          className="block ml-auto bg-red-500 text-white p-2 rounded"
-        >
-          Close
-        </button>
       </div>
     </div>
   );

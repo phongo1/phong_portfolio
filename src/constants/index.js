@@ -106,7 +106,7 @@ const projects = [
             { name: "Firebase DB", color: "orange" },
         ],
         link: "https://github.com/brandonistfan/GradeBuddy",
-        website: "https://www.gradebuddy.app",
+        website: null,
     },
     {
         name: "SimpliSplit",

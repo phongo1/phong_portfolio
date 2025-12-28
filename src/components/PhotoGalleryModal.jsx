@@ -160,7 +160,7 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
               </button>
             </div>
             <p className="text-sm text-white/90">
-              Photos from my camera roll that I like
+              Visual diary photos from my camera roll
             </p>
           </div>
 
