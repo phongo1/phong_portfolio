@@ -1,11 +1,11 @@
 const galleryMeta = {
     "I<3Charcuterie.jpeg": {
-        description: "charcuterie board",
+        description: "charcuterie",
         date: "2025-11-08",
     },
-    "I<3Cville.jpeg": { description: "donwtown cville", date: "2025-11-14" },
+    "I<3Cville.jpeg": { description: "downtown cville", date: "2025-11-14" },
     "LAOutlook1.jpeg": { description: "LA outlook", date: "2025-03-08" },
-    "LAOutlook2.jpeg": { description: "view of all of LA", date: "2025-03-08" },
+    "LAOutlook2.jpeg": { description: "skyline view of LA", date: "2025-03-08" },
     "MiamiMall.jpeg": { description: "miami mall", date: "2024-12-27" },
     "NYC.jpeg": { description: "NYC", date: "2019-04-26" },
     "UVAPrettyRotunda.jpeg": { description: "rotunda ;o", date: "2024-04-25" },
@@ -14,11 +14,11 @@ const galleryMeta = {
         date: "2024-11-08",
     },
     "appianCoworkers.jpeg": {
-        description: "appian interns matching",
+        description: "appian interns",
         date: "2025-08-15",
     },
     "bestToroAtTen.jpeg": {
-        description: "best toro ever at ten sushi",
+        description: "10/10 toro at ten sushi",
         date: "2025-11-14",
     },
     "birdwoodLightTrail.jpeg": {
@@ -29,7 +29,7 @@ const galleryMeta = {
     "brownies.jpeg": { description: "ube brownies", date: "2025-09-01" },
     "buschGardens.jpeg": { description: "busch gardens", date: "2025-05-04" },
     "cafeDrink.jpeg": {
-        description: "camelias cafe drink",
+        description: "camelias cafe matcha spritz",
         date: "2025-08-30",
     },
     "californiaJapaneseVillage.jpeg": {
@@ -56,21 +56,21 @@ const galleryMeta = {
     },
     "halloween2025.jpeg": { description: "halloween 2025", date: "2025-10-31" },
     "keywestBeach.jpeg": {
-        description: "key west is pretty",
+        description: "key west beach sunset",
         date: "2024-12-24",
     },
     "lakeBarcroft.jpeg": {
         description: "lake barcroft view",
         date: "2024-06-06",
     },
-    "legos.jpeg": { description: "I <3 legos", date: "2025-08-28" },
+    "legos.jpeg": { description: "lego haul", date: "2025-08-28" },
     "lycheeCocktail.jpeg": {
         description: "lychee cocktail",
         date: "2025-06-15",
     },
     "matcha.jpeg": { description: "matcha haul", date: "2025-12-27" },
     "mrytleBeach.jpeg": {
-        description: "myrtle beach scenic",
+        description: "myrtle beach sunset",
         date: "2025-05-13",
     },
     "museumInDC.jpeg": { description: "museum in DC", date: "2022-11-27" },
@@ -83,7 +83,7 @@ const galleryMeta = {
         date: "2025-07-19",
     },
     "petTurtle.jpeg": {
-        description: "turtle I found in my front yard",
+        description: "turtle I found in my yard",
         date: "2025-09-29",
     },
     "pizzaGeorgeTownWaterFront.jpeg": {
@@ -95,18 +95,18 @@ const galleryMeta = {
         date: "2025-03-11",
     },
     "steaksInMiami.jpeg": {
-        description: "steak in keywest",
+        description: "steaks in keywest",
         date: "2024-12-25",
     },
     "sushi.jpeg": { description: "sushi", date: "2025-06-08" },
-    "techGame.jpeg": { description: "tech game 2025", date: "2025-12-27" },
+    "techGame.jpeg": { description: "tech game 2025", date: "2025-11-27" },
     "thaiRestaurantInDC.jpeg": {
         description: "thai restaurant in DC",
         date: "2025-08-23",
     },
     "thanksGiving2025.jpeg": {
-        description: "thanksgiving 2025",
-        date: "2025-12-27",
+        description: "friends-giving 2025",
+        date: "2025-11-27",
     },
 };
 
