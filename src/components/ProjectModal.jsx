@@ -60,7 +60,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="project-modal relative w-full max-w-4xl overflow-auto rounded-3xl border border-white/10 bg-[#0f111a] px-6 py-6 text-white shadow-md sm:px-8 sm:py-8 max-h-[85vh]"
+        className="project-modal relative w-[92%] max-w-4xl overflow-y-auto rounded-3xl border border-white/10 bg-[#0f111a] px-4 py-5 text-white shadow-md sm:w-full sm:px-8 sm:py-8 max-h-[85vh]"
         onClick={handleContentClick} // Prevents modal close when clicking on the content
       >
         <style>{`
@@ -80,10 +80,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             color: rgba(255, 255, 255, 1);
           }
         `}</style>
-          <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
-            <h2 className="text-xl font-semibold tracking-wide text-white sm:text-2xl">
-              {project.name}
-            </h2>
+        <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
+          <h2 className="text-lg font-semibold tracking-wide text-white sm:text-2xl">
+            {project.name}
+          </h2>
           <button
             type="button"
             onClick={onClose}
@@ -93,12 +93,12 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             <IoClose className="h-4 w-4" />
           </button>
         </div>
-        <div className="slider-container my-6 px-4 flex justify-center">
-          <Slider {...settings} className=" w-[30rem] h-[20rem] p-0">
+        <div className="slider-container my-4 flex justify-center sm:my-6">
+          <Slider {...settings} className="w-full max-w-[20rem] h-42 p-0 sm:w-[30rem] sm:max-w-none sm:h-[20rem]">
             {project.photos.map((photo, index) => (
               <div
                 key={index}
-                className="overflow-hidden w-[30rem] h-[20rem] flex justify-center items-center"
+                className="overflow-hidden w-full h-42 flex justify-center items-center sm:w-[30rem] sm:h-[20rem]"
               >
                 <img
                   src={photo}
