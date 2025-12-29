@@ -7,10 +7,14 @@ const PAGE_SIZE = 6;
 const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Gallery", isLoading = false }) => {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const scrollRef = useRef(null);
+  const sentinelRef = useRef(null);
+  const visibleCountRef = useRef(visibleCount);
+  const scrollRafRef = useRef(null);
   const [isTouch, setIsTouch] = useState(false);
   const [activePhoto, setActivePhoto] = useState(null);
   const [drawerPhoto, setDrawerPhoto] = useState(null);
   const autoHideTimerRef = useRef(null);
+  const supportsObserver = typeof window !== "undefined" && "IntersectionObserver" in window;
   const drawerOpen = Boolean(drawerPhoto && !isTouch);
   const handleDrawerClose = () => {
     if (drawerOpen) setDrawerPhoto(null);
@@ -85,13 +89,56 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
 
   useEffect(() => {
     if (!isOpen || isLoading || photos.length <= visibleCount) return;
+    if (supportsObserver) return;
     const container = scrollRef.current;
     if (!container) return;
 
     if (container.scrollHeight <= container.clientHeight + 8) {
       setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, photos.length));
     }
-  }, [isOpen, isLoading, photos.length, visibleCount]);
+  }, [isOpen, isLoading, photos.length, visibleCount, supportsObserver]);
+
+  useEffect(() => {
+    visibleCountRef.current = visibleCount;
+  }, [visibleCount]);
+
+  useEffect(() => {
+    return () => {
+      if (scrollRafRef.current) {
+        cancelAnimationFrame(scrollRafRef.current);
+        scrollRafRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!supportsObserver || !isOpen || isLoading) return undefined;
+    const container = scrollRef.current;
+    const sentinel = sentinelRef.current;
+    if (!container || !sentinel) return undefined;
+
+    let rafId = null;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        if (visibleCountRef.current >= photos.length) return;
+        if (rafId) return;
+
+        rafId = requestAnimationFrame(() => {
+          setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, photos.length));
+          rafId = null;
+        });
+      },
+      { root: container, rootMargin: "200px 0px", threshold: 0.01 }
+    );
+
+    observer.observe(sentinel);
+
+    return () => {
+      observer.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [supportsObserver, isOpen, isLoading, photos.length]);
 
   const handleContentClick = (event) => {
     event.stopPropagation();
@@ -107,13 +154,23 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
     setDrawerPhoto((prev) => (prev?.src === photo.src ? null : photo));
   };
 
-  const handleScroll = (event) => {
-    if (isLoading || photos.length <= visibleCount) return;
+  const handleScroll = () => {
+    if (supportsObserver || isLoading || photos.length <= visibleCount) return;
+    if (scrollRafRef.current) return;
 
-    const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-    if (scrollHeight - scrollTop - clientHeight < 120) {
-      setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, photos.length));
-    }
+    scrollRafRef.current = requestAnimationFrame(() => {
+      const container = scrollRef.current;
+      if (!container) {
+        scrollRafRef.current = null;
+        return;
+      }
+
+      const { scrollTop, clientHeight, scrollHeight } = container;
+      if (scrollHeight - scrollTop - clientHeight < 120) {
+        setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, photos.length));
+      }
+      scrollRafRef.current = null;
+    });
   };
 
   return (
@@ -168,7 +225,7 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
             <div className="relative flex h-full min-h-0">
               <div
                 ref={scrollRef}
-                onScroll={handleScroll}
+                onScroll={supportsObserver ? undefined : handleScroll}
                 onClick={() => {
                   if (isTouch) {
                     setActivePhoto(null);
@@ -193,51 +250,54 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
                       No photos to display.
                     </p>
                   ) : (
-                    <div className="grid w-full max-w-[40rem] grid-cols-2 gap-4 sm:grid-cols-3">
-                      {photos.slice(0, visibleCount).map((photo) => {
-                        const photoKey = `${photo.src}-${photo.alt}`;
-                        const isActive = isTouch && activePhoto === photoKey;
-                        const isSelected = !isTouch && drawerPhoto?.src === photo.src;
-                        const hoverOpacity = isTouch ? "" : "group-hover:opacity-100";
-                        const hoverTranslate = isTouch ? "" : "group-hover:translate-y-0";
-                        const hoverScale = isTouch ? "" : "group-hover:scale-105";
-                        const activeOpacity = isActive ? "opacity-100" : "opacity-0";
-                        const activeTranslate = isActive ? "translate-y-0" : "translate-y-2";
-                        const pointerClass = isTouch ? "cursor-pointer" : "hover:cursor-pointer";
-                        const selectedBorderClass = isSelected
-                          ? "bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd]"
-                          : "bg-white/10";
-                        const innerCardClass = "relative h-full w-full overflow-hidden rounded-[calc(1rem-1px)] bg-white/5";
+                    <>
+                      <div className="grid w-full max-w-[40rem] grid-cols-2 gap-4 sm:grid-cols-3">
+                        {photos.slice(0, visibleCount).map((photo) => {
+                          const photoKey = `${photo.src}-${photo.alt}`;
+                          const isActive = isTouch && activePhoto === photoKey;
+                          const isSelected = !isTouch && drawerPhoto?.src === photo.src;
+                          const hoverOpacity = isTouch ? "" : "group-hover:opacity-100";
+                          const hoverTranslate = isTouch ? "" : "group-hover:translate-y-0";
+                          const hoverScale = isTouch ? "" : "group-hover:scale-105";
+                          const activeOpacity = isActive ? "opacity-100" : "opacity-0";
+                          const activeTranslate = isActive ? "translate-y-0" : "translate-y-2";
+                          const pointerClass = isTouch ? "cursor-pointer" : "hover:cursor-pointer";
+                          const selectedBorderClass = isSelected
+                            ? "bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd]"
+                            : "bg-white/10";
+                          const innerCardClass = "relative h-full w-full overflow-hidden rounded-[calc(1rem-1px)] bg-white/5";
 
-                        return (
-                          <div
-                            key={photoKey}
-                            className={`group relative overflow-hidden rounded-2xl p-[1px] transition-colors duration-150 ${selectedBorderClass} ${pointerClass}`}
-                            onClick={(event) => handlePhotoClick(event, photo, photoKey)}
-                          >
-                            <div className={innerCardClass}>
-                              <img
-                                src={photo.src}
-                                alt={photo.alt}
-                                loading="lazy"
-                                decoding="async"
-                                className={`h-[12.5rem] w-full object-cover transition duration-300 ease-out ${hoverScale} sm:h-[17.25rem]`}
-                              />
-                              {photo.date ? (
-                                <span className={`pointer-events-none absolute left-3 top-3 rounded-md bg-black/70 px-2 py-1 text-[0.65rem] text-white/90 transition duration-300 ${activeOpacity} ${hoverOpacity}`}>
-                                  {photo.date}
-                                </span>
-                              ) : null}
-                              {photo.description ? (
-                                <span className={`pointer-events-none absolute inset-x-3 bottom-3 rounded-md bg-black/70 px-2 py-1 text-[0.65rem] text-white/90 transition duration-300 ${activeOpacity} ${activeTranslate} ${hoverOpacity} ${hoverTranslate}`}>
-                                  {photo.description}
-                                </span>
-                              ) : null}
+                          return (
+                            <div
+                              key={photoKey}
+                              className={`group relative overflow-hidden rounded-2xl p-[1px] transition-colors duration-150 ${selectedBorderClass} ${pointerClass}`}
+                              onClick={(event) => handlePhotoClick(event, photo, photoKey)}
+                            >
+                              <div className={innerCardClass}>
+                                <img
+                                  src={photo.src}
+                                  alt={photo.alt}
+                                  loading="lazy"
+                                  decoding="async"
+                                  className={`h-[12.5rem] w-full object-cover transition-transform duration-300 ease-out will-change-transform ${hoverScale} sm:h-[17.25rem]`}
+                                />
+                                {photo.date ? (
+                                  <span className={`pointer-events-none absolute left-3 top-3 rounded-md bg-black/70 px-2 py-1 text-[0.65rem] text-white/90 transition-opacity duration-300 ease-out ${activeOpacity} ${hoverOpacity}`}>
+                                    {photo.date}
+                                  </span>
+                                ) : null}
+                                {photo.description ? (
+                                  <span className={`pointer-events-none absolute inset-x-3 bottom-3 rounded-md bg-black/70 px-2 py-1 text-[0.65rem] text-white/90 transition-[opacity,transform] duration-300 ease-out will-change-transform ${activeOpacity} ${activeTranslate} ${hoverOpacity} ${hoverTranslate}`}>
+                                    {photo.description}
+                                  </span>
+                                ) : null}
+                              </div>
                             </div>
-                          </div>
-                        );
-                      })}
-                    </div>
+                          );
+                        })}
+                      </div>
+                      <div ref={sentinelRef} className="h-px w-full" aria-hidden="true" />
+                    </>
                   )}
                 </div>
               </div>
