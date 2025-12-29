@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { IoClose, IoArrowBack } from "react-icons/io5";
 
@@ -16,6 +16,22 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
   const autoHideTimerRef = useRef(null);
   const supportsObserver = typeof window !== "undefined" && "IntersectionObserver" in window;
   const drawerOpen = Boolean(drawerPhoto && !isTouch);
+  const latestPhotoDate = useMemo(() => {
+    let latestTimestamp = -Infinity;
+    let latestDate = null;
+
+    photos.forEach((photo) => {
+      if (!photo?.date) return;
+      const timestamp = Date.parse(photo.date);
+      if (Number.isNaN(timestamp)) return;
+      if (timestamp > latestTimestamp) {
+        latestTimestamp = timestamp;
+        latestDate = photo.date;
+      }
+    });
+
+    return latestDate;
+  }, [photos]);
   const handleDrawerClose = () => {
     if (drawerOpen) setDrawerPhoto(null);
   };
@@ -207,18 +223,27 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
               <h2 id="photo-gallery-title" className="text-lg font-semibold tracking-wide text-white sm:text-xl">
                 {title}
               </h2>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label="Close gallery"
-                className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:text-white"
-              >
-                <IoClose className="h-4 w-4" />
-              </button>
+              <div className="flex flex-col items-end gap-1 justify-between">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  aria-label="Close gallery"
+                  className="rounded-full border border-white/10 bg-white/5 p-2 text-white/70 transition hover:text-white"
+                >
+                  <IoClose className="h-4 w-4" />
+                </button>
+              </div>
             </div>
-            <p className="text-sm text-white/90">
-              My visual diary camera-roll photos
-            </p>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="text-sm text-white/90">
+                My visual diary camera-roll photos
+              </p>
+              {latestPhotoDate ? (
+                <span className="text-[0.7rem] font-medium tracking-wide text-transparent bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] bg-clip-text">
+                  UPDATED: {latestPhotoDate}
+                </span>
+              ) : null}
+            </div>
           </div>
 
           <div className="flex-1 min-h-0 overflow-hidden pl-6 pt-4 pb-6 sm:pl-8 sm:pt-6 sm:pb-8">
