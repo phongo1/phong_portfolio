@@ -89,6 +89,7 @@ const Landing = ({ isLoading, onSplineReady }) => {
 
   return (
     <section
+      id="top"
       className={`text-white w-full h-auto pt-[11rem] flex flex-wrap ${styles.paddingX} mx-auto gap-x-16 justify-center`}
     >
       {!isLoading && (

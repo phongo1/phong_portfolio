@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 
-import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 
 const navbarAnimation = {
@@ -33,6 +32,10 @@ const Navbar = ({ isLoading }) => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const controls = useAnimation();
+  const activeRef = useRef(active);
+  const contactAtBottomRef = useRef(false);
+  const sectionStatsRef = useRef(new Map());
+  const updateActiveRef = useRef(null);
 
   useEffect(() => {
     if (!isLoading) {
@@ -40,40 +43,92 @@ const Navbar = ({ isLoading }) => {
     }
   }, [isLoading, controls]);
 
-  useScrollPosition(() => {
-    let newActive = "";
-    if (
-      document.getElementById("about").getBoundingClientRect().y - 100 > 0 &&
-      active != "phong"
-    ) {
-      setActive("phong");
-    }
-    navLinks.forEach((link) => {
-      const section = document.getElementById(link.id);
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        const isVisible =
-          rect.top - 150 < 0 && // Top of the section is within the viewport
-          rect.bottom > 0; // Bottom of the section hasn't scrolled past the top edge
-      
-        const scrolledToBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight;
-
-        if (isVisible) {
-          newActive = link.title;
-        }
-        else if(scrolledToBottom) {
-          newActive = 'Contact';
-        }
-      }
-    });
-
-    if (
-      newActive !== active &&
-      document.getElementById("about").getBoundingClientRect().y - 90 < 0
-    ) {
-      setActive(newActive);
-    }
+  useEffect(() => {
+    activeRef.current = active;
   }, [active]);
+
+  useEffect(() => {
+    const sectionIds = ["top", ...navLinks.map((link) => link.id)];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!sections.length) return undefined;
+
+    const updateActive = () => {
+      if (contactAtBottomRef.current) return;
+      const candidates = Array.from(sectionStatsRef.current.entries())
+        .filter(([, data]) => data.isIntersecting);
+
+      if (!candidates.length) return;
+
+      candidates.sort((a, b) => {
+        const heightDiff = b[1].visibleHeight - a[1].visibleHeight;
+        if (heightDiff !== 0) return heightDiff;
+        return Math.abs(a[1].top) - Math.abs(b[1].top);
+      });
+
+      const nextId = candidates[0][0];
+      const nextTitle = nextId === "top"
+        ? "phong"
+        : navLinks.find((link) => link.id === nextId)?.title;
+
+      if (nextTitle && nextTitle !== activeRef.current) {
+        setActive(nextTitle);
+      }
+    };
+
+    updateActiveRef.current = updateActive;
+    sectionStatsRef.current = new Map(
+      sections.map((section) => [section.id, { isIntersecting: false, visibleHeight: 0, top: 0 }])
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          sectionStatsRef.current.set(entry.target.id, {
+            isIntersecting: entry.isIntersecting,
+            visibleHeight: entry.intersectionRect.height,
+            top: entry.boundingClientRect.top,
+          });
+        });
+
+        updateActive();
+      },
+      { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      observer.disconnect();
+      updateActiveRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const contactSentinel = document.getElementById("contact-sentinel");
+    if (!contactSentinel) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const isVisible = entries.some((entry) => entry.isIntersecting);
+        contactAtBottomRef.current = isVisible;
+
+        if (isVisible && activeRef.current !== "Contact") {
+          setActive("Contact");
+        }
+        if (!isVisible) {
+          updateActiveRef.current?.();
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(contactSentinel);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleClick = (e, id) => {
     e.preventDefault(); // Prevent the default anchor behavior

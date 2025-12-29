@@ -51,7 +51,10 @@ const Contact = () => {
           <FaLinkedin />
         </a>
       </motion.div>
-      <div className=" w-full h-9 relative bottom-0 flex items-center justify-center gap-3">
+      <div
+        id="contact-sentinel"
+        className=" w-full h-9 relative bottom-0 flex items-center justify-center gap-3"
+      >
         <span className="text-xs text-indigo-200">Built with</span>
         <FaReact className="text-indigo-200"/>
         

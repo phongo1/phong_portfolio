@@ -12,10 +12,11 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       onClose();
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const scrollOptions = { passive: true };
+    window.addEventListener("scroll", handleScroll, scrollOptions);
 
     // cleanup function to remove the event listener
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll, scrollOptions);
   }, [onClose]);
 
   const handleContentClick = (event) => {
@@ -56,7 +57,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[99] flex items-center justify-center bg-black/50 p-4"
+      className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/50 p-4"
       onClick={onClose}
     >
       <div
@@ -104,6 +105,8 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   src={photo}
                   alt={`Slide ${index}`}
                   className="object-contain w-full h-full"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
                 />
               </div>
             ))}

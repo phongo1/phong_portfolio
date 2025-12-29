@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { projects } from "../constants";
-import ProjectModal from "./ProjectModal";
 import ProjectCard from "./ProjectCard";
+
+const ProjectModal = lazy(() => import("./ProjectModal"));
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -51,11 +52,13 @@ const Projects = () => {
             transition={{ duration: .225, ease:"easeIn" }}
             className="fixed"
           >
-            <ProjectModal
-              project={selectedProject}
-              isOpen={isModalOpen}
-              onClose={closeModal}
-            />
+            <Suspense fallback={null}>
+              <ProjectModal
+                project={selectedProject}
+                isOpen={isModalOpen}
+                onClose={closeModal}
+              />
+            </Suspense>
           </motion.div>
         )}
       </AnimatePresence>
