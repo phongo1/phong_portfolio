@@ -50,7 +50,7 @@ const Projects = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: .225, ease:"easeIn" }}
-            className="fixed"
+            className="fixed z-[999999]"
           >
             <Suspense fallback={null}>
               <ProjectModal
