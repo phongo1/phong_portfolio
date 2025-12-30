@@ -1,12 +1,15 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
   const scrollerRef = useRef(null);
   const itemNodesRef = useRef([]);
   const scrollRafRef = useRef(null);
-  const activeKeyRef = useRef(null);
+  const activeIndexRef = useRef(null);
   const copyCountRef = useRef(1);
+  const scrollEndTimeoutRef = useRef(null);
+  const snapEndTimeoutRef = useRef(null);
+  const isSnappingRef = useRef(false);
   const dragStateRef = useRef({
     pointerId: null,
     startX: 0,
@@ -15,11 +18,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     isDragging: false,
     hasPointer: false,
   });
-  const scrollEndTimeoutRef = useRef(null);
-  const isScrollingRef = useRef(false);
-  const [activeKey, setActiveKey] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
+  const [isWheeling, setIsWheeling] = useState(false);
 
   const photoSet = project?.photos ?? [];
   const copyCount = photoSet.length > 1 ? 5 : 1;
@@ -40,8 +41,8 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   }, [copyCount]);
 
   useEffect(() => {
-    activeKeyRef.current = activeKey;
-  }, [activeKey]);
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
 
   useEffect(() => {
     return () => {
@@ -52,6 +53,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       if (scrollEndTimeoutRef.current) {
         clearTimeout(scrollEndTimeoutRef.current);
         scrollEndTimeoutRef.current = null;
+      }
+      if (snapEndTimeoutRef.current) {
+        clearTimeout(snapEndTimeoutRef.current);
+        snapEndTimeoutRef.current = null;
       }
     };
   }, []);
@@ -98,29 +103,45 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   const updateActive = () => {
     const closest = getClosestNode();
     if (!closest) return;
-    const nextKey = closest?.dataset.photoKey ?? null;
-    if (nextKey && nextKey !== activeKeyRef.current) {
-      activeKeyRef.current = nextKey;
-      setActiveKey(nextKey);
+    const nextIndex = closest?.dataset.photoIndex;
+    const parsedIndex = nextIndex !== undefined ? Number(nextIndex) : null;
+    if (parsedIndex !== null && !Number.isNaN(parsedIndex) && parsedIndex !== activeIndexRef.current) {
+      activeIndexRef.current = parsedIndex;
+      setActiveIndex(parsedIndex);
     }
   };
 
-  const snapToClosest = () => {
+  const normalizeScrollPosition = () => {
+    const container = scrollerRef.current;
+    const copies = copyCountRef.current;
+    if (!container || copies <= 1) return;
+    const copyWidth = container.scrollWidth / copies;
+    if (!copyWidth) return;
+
+    const middleIndex = Math.floor(copies / 2);
+    const lowerBound = copyWidth * (middleIndex - 0.5);
+    const upperBound = copyWidth * (middleIndex + 0.5);
+
+    while (container.scrollLeft < lowerBound) {
+      container.scrollLeft += copyWidth;
+    }
+    while (container.scrollLeft > upperBound) {
+      container.scrollLeft -= copyWidth;
+    }
+  };
+
+  const smoothSnapToClosest = () => {
+    if (isSnappingRef.current) return;
     const closest = getClosestNode();
     if (!closest) return;
+    isSnappingRef.current = true;
     closest.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
-  };
-
-  const startScrolling = () => {
-    if (isScrollingRef.current) return;
-    isScrollingRef.current = true;
-    setIsScrolling(true);
-  };
-
-  const stopScrolling = () => {
-    if (!isScrollingRef.current) return;
-    isScrollingRef.current = false;
-    setIsScrolling(false);
+    if (snapEndTimeoutRef.current) {
+      clearTimeout(snapEndTimeoutRef.current);
+    }
+    snapEndTimeoutRef.current = setTimeout(() => {
+      isSnappingRef.current = false;
+    }, 240);
   };
 
   const handleGalleryScroll = () => {
@@ -132,50 +153,49 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         return;
       }
 
-      const copies = copyCountRef.current;
-      if (copies > 1) {
-        const copyWidth = container.scrollWidth / copies;
-        if (copyWidth) {
-          const lowerBound = copyWidth * 0.5;
-          const upperBound = copyWidth * 1.5;
-          while (container.scrollLeft < lowerBound) {
-            container.scrollLeft += copyWidth;
-          }
-          while (container.scrollLeft > upperBound) {
-            container.scrollLeft -= copyWidth;
-          }
-        }
-      }
-
       updateActive();
       scrollRafRef.current = null;
     });
 
-    if (!dragStateRef.current.isDragging) {
-      startScrolling();
-      if (scrollEndTimeoutRef.current) clearTimeout(scrollEndTimeoutRef.current);
-      scrollEndTimeoutRef.current = setTimeout(() => {
-        stopScrolling();
-        snapToClosest();
-      }, 140);
+    if (isSnappingRef.current) return;
+    if (scrollEndTimeoutRef.current) {
+      clearTimeout(scrollEndTimeoutRef.current);
     }
+    scrollEndTimeoutRef.current = setTimeout(() => {
+      if (!dragStateRef.current.isDragging) {
+        normalizeScrollPosition();
+        updateActive();
+        smoothSnapToClosest();
+      }
+      setIsWheeling(false);
+    }, 160);
   };
 
-  const handleGalleryWheel = (event) => {
-    if (!scrollerRef.current || Math.abs(event.deltaX) < 0.01) return;
-    event.preventDefault();
-    scrollerRef.current.scrollLeft += event.deltaX * 0.35;
-  };
+  const handleGalleryWheel = useCallback((event) => {
+    if (!scrollerRef.current) return;
+    const delta =
+      Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (Math.abs(delta) < 0.01) return;
+    if (event.cancelable) event.preventDefault();
+    setIsWheeling(true);
+    scrollerRef.current.scrollLeft += delta * 0.5;
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const container = scrollerRef.current;
+    if (!container) return undefined;
+
+    const handleWheel = (event) => handleGalleryWheel(event);
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => container.removeEventListener("wheel", handleWheel);
+  }, [handleGalleryWheel, isOpen]);
 
   const handlePointerDown = (event) => {
     if (!scrollerRef.current) return;
+    if (event.pointerType === "touch") return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
-
-    if (scrollEndTimeoutRef.current) {
-      clearTimeout(scrollEndTimeoutRef.current);
-      scrollEndTimeoutRef.current = null;
-    }
-    stopScrolling();
 
     dragStateRef.current = {
       pointerId: event.pointerId,
@@ -228,11 +248,6 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     state.isDragging = false;
     setIsDragging(false);
 
-    if (scrollEndTimeoutRef.current) {
-      clearTimeout(scrollEndTimeoutRef.current);
-      scrollEndTimeoutRef.current = null;
-    }
-
     if (container) {
       try {
         container.releasePointerCapture(event.pointerId);
@@ -241,7 +256,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       }
     }
 
-    snapToClosest();
+    normalizeScrollPosition();
+    updateActive();
+    smoothSnapToClosest();
   };
 
   useEffect(() => {
@@ -257,10 +274,11 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
       if (initialNode) {
         initialNode.scrollIntoView({ inline: "center", block: "nearest" });
-        setActiveKey(initialKey);
+        setActiveIndex(0);
       } else if (itemNodesRef.current[0]) {
-        const fallbackKey = itemNodesRef.current[0].dataset.photoKey ?? null;
-        setActiveKey(fallbackKey);
+        const fallbackIndex = itemNodesRef.current[0].dataset.photoIndex;
+        const parsedIndex = fallbackIndex !== undefined ? Number(fallbackIndex) : null;
+        setActiveIndex(parsedIndex);
       }
 
       updateActive();
@@ -279,10 +297,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/50 p-4"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/50 p-4">
       <div
         className="project-modal relative w-[92%] max-w-4xl overflow-y-auto rounded-3xl border border-white/10 bg-[#0f111a] px-6 py-6 text-white shadow-md sm:w-full sm:px-10 sm:py-9 max-h-[85vh]"
         onClick={handleContentClick} // Prevents modal close when clicking on the content
@@ -292,7 +307,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            touch-action: pan-y;
+            touch-action: pan-x;
           }
           .project-carousel::-webkit-scrollbar {
             width: 0;
@@ -317,24 +332,24 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           <div
             ref={scrollerRef}
             onScroll={handleGalleryScroll}
-            onWheel={handleGalleryWheel}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerEnd}
             onPointerCancel={handlePointerEnd}
             className={`project-carousel flex gap-1 sm:gap-2 overflow-x-auto px-4 sm:px-6 pb-3 select-none ${
-              isDragging || isScrolling ? "snap-none cursor-grabbing" : "snap-x snap-mandatory cursor-grab"
-            }`}
+              isDragging || isWheeling ? "snap-none" : "snap-x snap-mandatory"
+            } ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
           >
             {carouselPhotos.map((photo) => {
-              const isActive = photo.key === activeKey;
+              const isActive = photo.index === activeIndex;
               return (
                 <div
                   key={photo.key}
                   data-photo-key={photo.key}
-                  className={`snap-center flex-none w-[17rem] sm:w-[23rem] md:w-[27rem] transition-[opacity,transform] duration-300 ease-out ${
-                    isActive ? "opacity-100 scale-[1.05]" : "opacity-35 scale-[0.86]"
-                  }`}
+                  data-photo-index={photo.index}
+                  className={`snap-center flex-none w-[17rem] sm:w-[23rem] md:w-[27rem] ${
+                    isWheeling ? "transition-none" : "transition-[opacity,transform] duration-300 ease-out"
+                  } ${isActive ? "opacity-100 scale-[1.05]" : "opacity-35 scale-[0.86]"}`}
                 >
                   <div className="h-[12rem] sm:h-[14rem] md:h-[16rem] overflow-hidden rounded-2xl flex items-center justify-center">
                     <img
