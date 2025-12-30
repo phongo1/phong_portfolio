@@ -25,7 +25,7 @@ const galleryMeta = {
     "MiamiMall.jpeg": { description: "miami mall", date: "2024-12-27" },
     "UVAPrettyRotunda.jpeg": { description: "rotunda ;o", date: "2024-04-25" },
     "UVARotunda.jpeg": {
-        description: "UVA rotunda in the fall",
+        description: "rotunda (fall)",
         date: "2024-11-08",
     },
     "appianCoworkers.jpeg": {
@@ -33,14 +33,14 @@ const galleryMeta = {
         date: "2025-08-15",
     },
     "bestToroAtTen.jpeg": {
-        description: "10/10 toro at ten sushi",
+        description: "9$ bite",
         date: "2025-11-14",
     },
     "blindboxes.jpeg": { description: "blind box haul", date: "2025-06-14" },
     "brownies.jpeg": { description: "ube brownies", date: "2025-09-01" },
     "buschGardens.jpeg": { description: "busch gardens", date: "2025-05-04" },
     "cafeDrink.jpeg": {
-        description: "camelias cafe matcha spritz",
+        description: "matcha spritz",
         date: "2025-08-30",
     },
     "californiaJapaneseVillage.jpeg": {
@@ -48,7 +48,7 @@ const galleryMeta = {
         date: "2025-03-09",
     },
     "cartersMountainSunset.jpeg": {
-        description: "carter's mountain sunset",
+        description: "carter's mountain",
         date: "2025-04-24",
     },
     "catCafe.jpeg": {
@@ -65,7 +65,7 @@ const galleryMeta = {
         description: "VA beach",
         date: "2023-07-30",
     },
-    "halloween2025.jpeg": { description: "halloween 2025", date: "2025-10-31" },
+    "halloween2025.jpeg": { description: "snow golem", date: "2025-10-31" },
     "keywestBeach.jpeg": {
         description: "key west beach sunset",
         date: "2024-12-24",
@@ -109,7 +109,7 @@ const galleryMeta = {
         description: "steaks in keywest",
         date: "2024-12-25",
     },
-    "sushi.jpeg": { description: "sushi", date: "2025-06-08" },
+    "sushi.jpeg": { description: "sushi cho", date: "2025-06-08" },
     "techGame.jpeg": { description: "tech game 2025", date: "2025-11-27" },
     "thaiRestaurantInDC.jpeg": {
         description: "thai restaurant in DC",
