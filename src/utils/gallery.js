@@ -23,7 +23,6 @@ const galleryMeta = {
     "LAOutlook1.jpeg": { description: "LA outlook", date: "2025-03-08" },
     "LAOutlook2.jpeg": { description: "skyline view of LA", date: "2025-03-08" },
     "MiamiMall.jpeg": { description: "miami mall", date: "2024-12-27" },
-    "NYC.jpeg": { description: "NYC", date: "2019-04-26" },
     "UVAPrettyRotunda.jpeg": { description: "rotunda ;o", date: "2024-04-25" },
     "UVARotunda.jpeg": {
         description: "UVA rotunda in the fall",
@@ -36,10 +35,6 @@ const galleryMeta = {
     "bestToroAtTen.jpeg": {
         description: "10/10 toro at ten sushi",
         date: "2025-11-14",
-    },
-    "birdwoodLightTrail.jpeg": {
-        description: "birdwood light trail",
-        date: "2022-12-12",
     },
     "blindboxes.jpeg": { description: "blind box haul", date: "2025-06-14" },
     "brownies.jpeg": { description: "ube brownies", date: "2025-09-01" },
@@ -67,7 +62,7 @@ const galleryMeta = {
     "dog.jpeg": { description: "doggie", date: "2024-10-18" },
     "dogHappy.jpeg": { description: "what da dawg doin", date: "2024-10-09" },
     "fenwickIsland.JPG": {
-        description: "VA beach sunrise",
+        description: "VA beach",
         date: "2023-07-30",
     },
     "halloween2025.jpeg": { description: "halloween 2025", date: "2025-10-31" },
