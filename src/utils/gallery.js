@@ -1,4 +1,20 @@
 const galleryMeta = {
+    "2025gifts.jpg": {
+        description: "christmas loot",
+        date: "2025-12-25",
+    },
+    "potluck2025.jpeg": {
+        description: "EO 2025 potluck",
+        date: "2025-12-29",
+    },
+    "margPizza.jpeg": {
+        description: "marg pizza",
+        date: "2025-12-29",
+    },
+    "iceskating.jpeg": {
+        description: "learned how to ice skate",
+        date: "2025-12-28",
+    },
     "I<3Charcuterie.jpeg": {
         description: "charcuterie",
         date: "2025-11-08",
@@ -14,7 +30,7 @@ const galleryMeta = {
         date: "2024-11-08",
     },
     "appianCoworkers.jpeg": {
-        description: "appian interns",
+        description: "appian <3",
         date: "2025-08-15",
     },
     "bestToroAtTen.jpeg": {

@@ -236,7 +236,7 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
             </div>
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="text-sm text-white/90">
-                My visual diary camera-roll photos
+                My visual diary
               </p>
               {latestPhotoDate ? (
                 <span className="text-[0.7rem] font-medium tracking-wide text-transparent bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] bg-clip-text">
