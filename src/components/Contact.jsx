@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { MdEmail } from "react-icons/md";
@@ -11,10 +10,15 @@ import { FaReact } from "react-icons/fa";
 import { SiVite } from "react-icons/si";
 import { BiLogoTailwindCss } from "react-icons/bi";
 
-
 import { beach_portrait } from "../assets";
+import EmailModal from "./EmailModal";
 
 const Contact = () => {
+  const [isEmailOpen, setIsEmailOpen] = useState(false);
+
+  const handleEmailOpen = () => setIsEmailOpen(true);
+  const handleEmailClose = () => setIsEmailOpen(false);
+
   return (
     <div
       className={`flex flex-col flex-wrap items-center w-full h-fit bg-[#1d1836] pt-5 gap-5 `}
@@ -33,14 +37,20 @@ const Contact = () => {
         />
       </div>
 
-      <motion.div className="flex gap-[3rem] flex-wrap py-5"
-        initial={{ y:0 }}
+      <motion.div
+        className="flex gap-[3rem] flex-wrap py-5"
+        initial={{ y: 0 }}
         whileInView={{ y: [-20, 0] }}
-        transition={{ type: 'spring', stiffness: 115, damping:6, duration: 1 }}
+        transition={{ type: "spring", stiffness: 115, damping: 6, duration: 1 }}
       >
-        <a href="mailto:phongl.hoa@gmail.com" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300" rel="noreferrer">
+        <button
+          type="button"
+          onClick={handleEmailOpen}
+          aria-label="Open email form"
+          className="!bg-transparent !border-0 !p-0 !text-4xl text-[#646cff] hover:text-[#535bf2] hover:scale-125 hover:-translate-y-2 transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#646cff]/50"
+        >
           <MdEmail />
-        </a>
+        </button>
         <a href="https://www.instagram.com/phong.hle/?next=%2F&hl=en" target="_blank" className="hover:cursor-pointer text-4xl hover:scale-125 hover:-translate-y-2 transition-transform duration-300" rel="noreferrer">
           <FaInstagram />
         </a>
@@ -62,6 +72,7 @@ const Contact = () => {
         
         <BiLogoTailwindCss className="text-indigo-200"/>
       </div>
+      <EmailModal isOpen={isEmailOpen} onClose={handleEmailClose} />
     </div>
   );
 };

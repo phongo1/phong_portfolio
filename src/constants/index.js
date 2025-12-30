@@ -39,7 +39,7 @@ const experiences = [
         date: "Fall 2025 - Present",
         points: [
             "Maintaining thecourseforum.com",
-            "A Python/Django course review platform supporting 18,000+ UVA students every semester",
+            "A Python/Django course review platform supporting 12,000+ UVA students every semester",
         ],
     },
     {
