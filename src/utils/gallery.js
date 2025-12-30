@@ -4,7 +4,7 @@ const galleryMeta = {
         date: "2025-12-25",
     },
     "potluck2025.jpeg": {
-        description: "EO 2025 potluck",
+        description: "EOY potluck",
         date: "2025-12-29",
     },
     "margPizza.jpeg": {
@@ -121,7 +121,7 @@ const galleryMeta = {
         date: "2025-08-23",
     },
     "thanksGiving2025.jpeg": {
-        description: "friends-giving 2025",
+        description: "friends-giving",
         date: "2025-11-27",
     },
 };
