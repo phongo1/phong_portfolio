@@ -1,4 +1,16 @@
 const galleryMeta = {
+    "boop2.jpg": {
+        description: "almost boop",
+        date: "2025-12-30",
+    },
+    "boop1.jpg": {
+        description: "boop #1",
+        date: "2025-12-30",
+    },
+    "chillguy.jpg": {
+        description: "chill guy",
+        date: "2025-12-30",
+    },
     "2025gifts.jpg": {
         description: "christmas loot",
         date: "2025-12-25",
