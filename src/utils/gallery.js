@@ -1,4 +1,12 @@
 const galleryMeta = {
+    "salmonLox.jpeg": {
+        description: "makers union lox",
+        date: "2026-01-01",
+    },
+    "calamari.jpeg": {
+        description: "calamari",
+        date: "2026-01-01",
+    },
     "boop2.jpeg": {
         description: "goat",
         date: "2025-12-30",
@@ -114,7 +122,7 @@ const galleryMeta = {
         date: "2025-08-09",
     },
     "seasideBakery.jpeg": {
-        description: "seaside bakery in cali #keshi #stussy",
+        description: "seaside bakery #keshi #stussy",
         date: "2025-03-11",
     },
     "steaksInMiami.jpeg": {
