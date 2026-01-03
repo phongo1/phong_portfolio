@@ -15,6 +15,10 @@ const galleryMeta = {
         description: "boop",
         date: "2025-12-30",
     },
+    "camel.jpeg": {
+        description: "camel",
+        date: "2025-12-30",
+    },
     "chillguy.jpeg": {
         description: "chill guy",
         date: "2025-12-30",
@@ -38,6 +42,10 @@ const galleryMeta = {
     "I<3Charcuterie.jpeg": {
         description: "charcuterie",
         date: "2025-11-08",
+    },
+    "stew.jpg": {
+        description: "stew",
+        date: "2025-11-30",
     },
     "I<3Cville.jpeg": { description: "downtown cville", date: "2025-11-14" },
     "LAOutlook1.jpeg": { description: "LA outlook", date: "2025-03-08" },
