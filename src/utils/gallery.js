@@ -39,15 +39,11 @@ const galleryMeta = {
         description: "learned how to ice skate",
         date: "2025-12-28",
     },
-    "I<3Charcuterie.jpeg": {
+    "charcuterie.jpeg": {
         description: "charcuterie",
         date: "2025-11-08",
     },
-    "stew.jpg": {
-        description: "stew",
-        date: "2025-11-30",
-    },
-    "I<3Cville.jpeg": { description: "downtown cville", date: "2025-11-14" },
+    "cville.jpeg": { description: "downtown cville", date: "2025-11-14" },
     "LAOutlook1.jpeg": { description: "LA outlook", date: "2025-03-08" },
     "LAOutlook2.jpeg": { description: "skyline view of LA", date: "2025-03-08" },
     "MiamiMall.jpeg": { description: "miami mall", date: "2024-12-27" },
