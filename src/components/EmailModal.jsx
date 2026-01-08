@@ -64,7 +64,7 @@ const EmailModal = ({ isOpen, onClose }) => {
               Send me a note
             </h2>
             <p className="text-sm text-white/70">
-              This goes directly to my email
+              This goes directly to my email (phongl.hoa@gmail.com)
             </p>
           </div>
           <button
