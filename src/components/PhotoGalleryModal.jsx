@@ -99,15 +99,21 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
 
       const { scrollTop, clientHeight, scrollHeight } = container;
       const maxScroll = Math.max(scrollHeight - clientHeight, 1);
+      const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+      let indicatorCenter = clientHeight * 0.2;
 
       if (!isTouch) {
         const indicator = scrollIndicatorRef.current;
         if (indicator) {
-          const indicatorHeight = scrollIndicatorHeightRef.current || indicator.offsetHeight;
-          scrollIndicatorHeightRef.current = indicatorHeight;
+          let indicatorHeight = scrollIndicatorHeightRef.current;
+          if (!indicatorHeight) {
+            indicatorHeight = indicator.offsetHeight;
+            scrollIndicatorHeightRef.current = indicatorHeight;
+          }
           const travel = Math.max(clientHeight - indicatorHeight, 0);
-          const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
-          indicator.style.transform = `translate3d(0, ${Math.round(travel * progress)}px, 0)`;
+          const indicatorTop = travel * progress;
+          indicatorCenter = indicatorTop + indicatorHeight / 2;
+          indicator.style.transform = `translate3d(0, ${Math.round(indicatorTop)}px, 0)`;
         }
 
         if (visibleCount > 0) {
@@ -116,11 +122,13 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
           if (columns > 0) {
             const rowHeight = rowMetricsRef.current.rowHeight;
             if (rowHeight > 0) {
-              const anchor = scrollTop + clientHeight * 0.2;
-              const rowIndex = Math.max(0, Math.floor(anchor / rowHeight));
+              const anchor = scrollTop + indicatorCenter;
+              const rowIndex = Math.max(0, Math.round((anchor - rowHeight / 2) / rowHeight));
               index = rowIndex * columns;
             } else {
-              index = Math.floor((scrollTop / maxScroll) * (visibleCount - 1));
+              const anchor = scrollTop + indicatorCenter;
+              const ratio = Math.min(Math.max(anchor / Math.max(scrollHeight, 1), 0), 1);
+              index = Math.floor(ratio * (visibleCount - 1));
             }
           }
           updateScrollLabel(index);
