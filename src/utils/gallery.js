@@ -1,4 +1,12 @@
 const galleryMeta = {
+    "noodles.jpg": {
+        description: "Q noodles",
+        date: "2025-10-25",
+    },
+    "ubeBrownie2.jpg": {
+        description: "ube brownies pt.2",
+        date: "2025-10-25",
+    },
     "hotLatte.jpg": {
         description: "hot matcha",
         date: "2026-01-07",
