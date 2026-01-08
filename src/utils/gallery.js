@@ -8,7 +8,7 @@ const galleryMeta = {
         date: "2025-10-25",
     },
     "hotLatte.jpg": {
-        description: "hot matcha",
+        description: "camelias",
         date: "2026-01-07",
     },
     "salmonLox.jpeg": {
@@ -103,7 +103,7 @@ const galleryMeta = {
     },
     "halloween2025.jpeg": { description: "snow golem", date: "2025-10-31" },
     "keywestBeach.jpeg": {
-        description: "key west beach sunset",
+        description: "key west beach",
         date: "2024-12-24",
     },
     "lakeBarcroft.jpeg": {
@@ -117,7 +117,7 @@ const galleryMeta = {
     },
     "matcha.jpeg": { description: "matcha haul", date: "2025-12-27" },
     "mrytleBeach.jpeg": {
-        description: "myrtle beach sunset",
+        description: "myrtle beach",
         date: "2025-05-13",
     },
     "museumInDC.jpeg": { description: "museum in DC", date: "2022-11-27" },
