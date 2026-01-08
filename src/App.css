@@ -50,6 +50,29 @@
   height: 8px; /* Height of the horizontal scrollbar */
 }
 
+.photo-gallery-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.8) #0C0914;
+}
+
+.photo-gallery-scrollbar::-webkit-scrollbar {
+  width: 2px;
+  height: 8px;
+}
+
+.photo-gallery-scrollbar::-webkit-scrollbar-track {
+  background-color: #0C0914;
+}
+
+.photo-gallery-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 6px;
+}
+
+.photo-gallery-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
 .Typewriter__cursor{
   color: white;
 }

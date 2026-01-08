@@ -479,7 +479,7 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
                     setDrawerPhoto(null);
                   }
                 }}
-                className="min-w-0 flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain sm:w-full"
+                className="min-w-0 flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain sm:w-full photo-gallery-scrollbar"
                 style={{ direction: "rtl" }}
               >
                 <div className="w-full px-4 sm:px-6" style={{ direction: "ltr" }}>
