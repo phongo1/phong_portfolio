@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { IoClose, IoArrowBack } from "react-icons/io5";
+import { LuMouse } from "react-icons/lu";
 
 const PAGE_SIZE = 6;
 
@@ -20,12 +21,16 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
   const scrollIndicatorHeightRef = useRef(0);
   const scrollIndicatorTimerRef = useRef(null);
   const scrollLabelRef = useRef("");
+  const scrollHintRef = useRef(null);
+  const scrollHintAnchorRef = useRef(null);
+  const scrollHintTimerRef = useRef(null);
   const gridRef = useRef(null);
   const firstItemRef = useRef(null);
   const rowMetricsRef = useRef({ rowHeight: 0 });
   const columnCountRef = useRef(2);
   const [scrollLabel, setScrollLabel] = useState(null);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [showScrollHint, setShowScrollHint] = useState(false);
   const supportsObserver = typeof window !== "undefined" && "IntersectionObserver" in window;
   const drawerOpen = Boolean(drawerPhoto && !isTouch);
   const latestPhotoDate = useMemo(() => {
@@ -145,7 +150,25 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
     });
   };
 
+  const scheduleScrollHint = () => {
+    if (scrollHintTimerRef.current) {
+      clearTimeout(scrollHintTimerRef.current);
+      scrollHintTimerRef.current = null;
+    }
+
+    if (!isOpen || isTouch || isLoading || photos.length === 0) return;
+
+    scrollHintTimerRef.current = setTimeout(() => {
+      setShowScrollHint(true);
+      scrollHintTimerRef.current = null;
+    }, 1500);
+  };
+
   const handleScroll = () => {
+    if (!isTouch) {
+      setShowScrollHint(false);
+      scheduleScrollHint();
+    }
     scheduleScrollUpdate(true);
   };
 
@@ -191,10 +214,15 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
       setDrawerPhoto(null);
       setIsScrolling(false);
       setScrollLabel(null);
+      setShowScrollHint(false);
       scrollLabelRef.current = "";
       if (scrollIndicatorTimerRef.current) {
         clearTimeout(scrollIndicatorTimerRef.current);
         scrollIndicatorTimerRef.current = null;
+      }
+      if (scrollHintTimerRef.current) {
+        clearTimeout(scrollHintTimerRef.current);
+        scrollHintTimerRef.current = null;
       }
     }
   }, [isOpen]);
@@ -202,6 +230,26 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
   useEffect(() => {
     if (isTouch) setDrawerPhoto(null);
   }, [isTouch]);
+
+  useEffect(() => {
+    if (!isOpen || isTouch || isLoading || photos.length === 0) {
+      setShowScrollHint(false);
+      if (scrollHintTimerRef.current) {
+        clearTimeout(scrollHintTimerRef.current);
+        scrollHintTimerRef.current = null;
+      }
+      return undefined;
+    }
+
+    scheduleScrollHint();
+
+    return () => {
+      if (scrollHintTimerRef.current) {
+        clearTimeout(scrollHintTimerRef.current);
+        scrollHintTimerRef.current = null;
+      }
+    };
+  }, [isOpen, isTouch, isLoading, photos.length]);
 
   useEffect(() => {
     if (!isOpen || isLoading || photos.length === 0 || scrollLabelRef.current) return;
@@ -257,6 +305,39 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
     if (!scrollIndicatorRef.current) return;
     scrollIndicatorHeightRef.current = scrollIndicatorRef.current.offsetHeight;
   }, [scrollLabel, isOpen]);
+
+  useEffect(() => {
+    if (!isOpen || isTouch) return undefined;
+    const wrapper = modalWrapperRef.current;
+    const anchor = scrollHintAnchorRef.current;
+    const hint = scrollHintRef.current;
+    if (!wrapper || !anchor || !hint) return undefined;
+
+    const update = () => {
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const anchorRect = anchor.getBoundingClientRect();
+      const hintRect = hint.getBoundingClientRect();
+      const gap = 36;
+      const left = anchorRect.left - wrapperRect.left - hintRect.width - gap;
+      const top = anchorRect.top - wrapperRect.top + (anchorRect.height - hintRect.height) / 2 + 30;
+
+      hint.style.left = `${Math.round(left)}px`;
+      hint.style.top = `${Math.round(top)}px`;
+    };
+
+    update();
+
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", update);
+      return () => window.removeEventListener("resize", update);
+    }
+
+    const observer = new ResizeObserver(update);
+    observer.observe(wrapper);
+    observer.observe(anchor);
+
+    return () => observer.disconnect();
+  }, [isOpen, isTouch, showScrollHint]);
 
   useEffect(() => {
     if (!isOpen || isLoading) return;
@@ -341,6 +422,10 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
         clearTimeout(scrollIndicatorTimerRef.current);
         scrollIndicatorTimerRef.current = null;
       }
+      if (scrollHintTimerRef.current) {
+        clearTimeout(scrollHintTimerRef.current);
+        scrollHintTimerRef.current = null;
+      }
     };
   }, []);
 
@@ -404,6 +489,17 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
       transition={{ duration: 0.10, ease: "easeOut" }}
     >
       <div ref={modalWrapperRef} className={`relative w-full max-w-5xl sm:max-w-[44rem] transition-transform duration-200 ease-out ${drawerOpen ? "sm:-translate-x-6 lg:-translate-x-8" : ""}`}>
+        {!isTouch ? (
+          <div
+            ref={scrollHintRef}
+            className={`pointer-events-none absolute left-0 top-0 z-20 transition-[opacity,transform] duration-200 ease-out ${showScrollHint ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"}`}
+          >
+            <div className="flex items-center gap-2 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/80">
+              <LuMouse className="h-4 w-4 animate-bounce" />
+              scroll
+            </div>
+          </div>
+        ) : null}
         {!isTouch && scrollLabel ? (
           <div ref={scrollIndicatorAreaRef} className="pointer-events-none absolute left-0 top-0 h-0 w-16 sm:w-24 z-10">
             <div ref={scrollIndicatorRef} className="absolute left-0 top-0 will-change-transform">
@@ -455,9 +551,9 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
                 </button>
               </div>
             </div>
-            <div className="flex flex-wrap items-center justify-between gap-2">
+            <div ref={scrollHintAnchorRef} className="flex flex-wrap items-center justify-between gap-2">
               <p className="text-sm text-white/90">
-                My visual diary
+                visual diary
               </p>
               {latestPhotoDate ? (
                 <span className="text-[0.7rem] font-medium tracking-wide text-transparent bg-gradient-to-r from-[#4d52ff] to-[#cf3dfd] bg-clip-text">
