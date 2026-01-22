@@ -29,7 +29,7 @@ import './index.css'
   };
 
   const pending = { delta: 0, rafId: null };
-  const multiplier = 2.0; // bump mouse wheel distance to feel closer to native
+  const multiplier = 2.5; // bump mouse wheel distance to feel closer to native
 
   window.addEventListener(
     "wheel",
