@@ -29,13 +29,20 @@ import './index.css'
   };
 
   const pending = { delta: 0, rafId: null };
-  const multiplier = 2.2; // bump mouse wheel distance to feel closer to native
+  const multiplier = 2.0; // bump mouse wheel distance to feel closer to native
 
   window.addEventListener(
     "wheel",
     (event) => {
       if (event.ctrlKey || !event.cancelable) return;
       if (isScrollableElement(event.target)) return;
+
+      // Heuristic: only intercept classic mouse wheels (line/page or chunky pixel deltas); let trackpads through.
+      const isMouseWheel =
+        event.deltaMode === 1 ||
+        event.deltaMode === 2 ||
+        (event.deltaMode === 0 && Number.isInteger(event.deltaY) && Math.abs(event.deltaY) >= 80);
+      if (!isMouseWheel) return;
 
       event.stopImmediatePropagation?.();
       event.preventDefault();
