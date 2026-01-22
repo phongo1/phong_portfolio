@@ -88,7 +88,7 @@ const galleryMeta = {
         date: "2025-08-30",
     },
     "californiaJapaneseVillage.jpeg": {
-        description: "california japanese village",
+        description: "japanese village - california",
         date: "2025-03-09",
     },
     "cartersMountainSunset.jpeg": {
@@ -96,7 +96,7 @@ const galleryMeta = {
         date: "2025-04-24",
     },
     "catCafe.jpeg": {
-        description: "big and huge cat (leesburg cat cafe)",
+        description: "big and huge cat - leesburg cat cafe",
         date: "2024-01-11",
     },
     "claySculturesActivity.jpeg": {
