@@ -1,5 +1,5 @@
 const galleryMeta = {
-    "snowRotunda1.jpeg": {
+    "snowRotunda.jpeg": {
         description: "winter tundy",
         date: "2026-01-26",
     },
