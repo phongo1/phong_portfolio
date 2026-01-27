@@ -17,6 +17,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     startScrollLeft: 0,
     isDragging: false,
     hasPointer: false,
+    skipDrag: false,
   });
   const [activeIndex, setActiveIndex] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -35,6 +36,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       }))
     ).flat();
   }, [photoSet, copyCount]);
+
+  const hintTimerRef = useRef(null);
+  const [showDragHint, setShowDragHint] = useState(false);
 
   useEffect(() => {
     copyCountRef.current = copyCount;
@@ -58,6 +62,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         clearTimeout(snapEndTimeoutRef.current);
         snapEndTimeoutRef.current = null;
       }
+      if (hintTimerRef.current) {
+        clearTimeout(hintTimerRef.current);
+        hintTimerRef.current = null;
+      }
     };
   }, []);
 
@@ -77,6 +85,17 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   const handleContentClick = (event) => {
     event.stopPropagation();
   };
+
+  const hintShownRef = useRef(false);
+  const prevActiveRef = useRef(null);
+
+  const cancelPendingHint = useCallback(() => {
+    if (hintTimerRef.current) {
+      clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = null;
+      hintShownRef.current = true;
+    }
+  }, []);
 
   const getClosestNode = () => {
     const container = scrollerRef.current;
@@ -179,7 +198,8 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     if (event.cancelable) event.preventDefault();
     setIsWheeling(true);
     scrollerRef.current.scrollLeft += delta * 0.5;
-  }, []);
+    cancelPendingHint();
+  }, [cancelPendingHint]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -192,10 +212,64 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     return () => container.removeEventListener("wheel", handleWheel);
   }, [handleGalleryWheel, isOpen]);
 
+  useEffect(() => {
+    if (!isOpen || !carouselPhotos.length) {
+      setShowDragHint(false);
+      hintShownRef.current = false;
+      prevActiveRef.current = null;
+      if (hintTimerRef.current) {
+        clearTimeout(hintTimerRef.current);
+        hintTimerRef.current = null;
+      }
+      return;
+    }
+
+    setShowDragHint(false);
+    hintShownRef.current = false;
+    prevActiveRef.current = activeIndexRef.current;
+
+    if (hintTimerRef.current) {
+      clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = null;
+    }
+
+    hintTimerRef.current = setTimeout(() => {
+      if (!hintShownRef.current) {
+        prevActiveRef.current = activeIndexRef.current;
+        setShowDragHint(true);
+        hintShownRef.current = true;
+      }
+      hintTimerRef.current = null;
+    }, 2000);
+  }, [isOpen, carouselPhotos.length]);
+
+  useEffect(() => {
+    if (!showDragHint) {
+      prevActiveRef.current = activeIndex;
+      return;
+    }
+
+    if (
+      prevActiveRef.current !== null &&
+      activeIndex !== null &&
+      activeIndex !== prevActiveRef.current
+    ) {
+      setShowDragHint(false);
+    }
+
+    prevActiveRef.current = activeIndex;
+  }, [activeIndex, showDragHint]);
+
   const handlePointerDown = (event) => {
     if (!scrollerRef.current) return;
     if (event.pointerType === "touch") return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
+    const clickableNode = event.target.closest("[data-photo-clickable]");
+    const isPhotoClick = Boolean(clickableNode);
+    const photoIndexAttr = clickableNode?.dataset.photoIndex;
+    const photoIndex = photoIndexAttr !== undefined && photoIndexAttr !== null ? Number(photoIndexAttr) : null;
+    const isActivePhoto = photoIndex !== null && photoIndex === activeIndexRef.current;
+    cancelPendingHint();
 
     dragStateRef.current = {
       pointerId: event.pointerId,
@@ -204,15 +278,19 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       startScrollLeft: scrollerRef.current.scrollLeft,
       isDragging: false,
       hasPointer: true,
+      skipDrag: isPhotoClick && !isActivePhoto,
     };
 
-    scrollerRef.current.setPointerCapture(event.pointerId);
+    if (!isPhotoClick || isActivePhoto) {
+      scrollerRef.current.setPointerCapture(event.pointerId);
+    }
   };
 
   const handlePointerMove = (event) => {
     const container = scrollerRef.current;
     const state = dragStateRef.current;
     if (!container || !state.hasPointer || state.pointerId !== event.pointerId) return;
+    if (state.skipDrag) return;
 
     const deltaX = event.clientX - state.startX;
     const deltaY = event.clientY - state.startY;
@@ -248,6 +326,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     state.isDragging = false;
     setIsDragging(false);
 
+    if (state.skipDrag) {
+      return;
+    }
+
     if (container) {
       try {
         container.releasePointerCapture(event.pointerId);
@@ -260,6 +342,32 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     updateActive();
     smoothSnapToClosest();
   };
+
+  const handlePhotoClick = useCallback((photoKey, photoIndex) => {
+    if (
+      photoIndex === activeIndexRef.current ||
+      !photoKey ||
+      dragStateRef.current.isDragging ||
+      isWheeling
+    ) {
+      return;
+    }
+    cancelPendingHint();
+    const target = itemNodesRef.current.find((node) => node.dataset.photoKey === photoKey);
+    if (!target || isSnappingRef.current) return;
+
+    isSnappingRef.current = true;
+    target.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+
+    if (snapEndTimeoutRef.current) {
+      clearTimeout(snapEndTimeoutRef.current);
+    }
+    snapEndTimeoutRef.current = setTimeout(() => {
+      isSnappingRef.current = false;
+      normalizeScrollPosition();
+      updateActive();
+    }, 260);
+  }, [cancelPendingHint, isWheeling]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -297,7 +405,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/50 p-4">
+    <div
+      className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/50 p-4"
+      onClick={onClose}
+    >
       <div
         className="project-modal relative w-[92%] max-w-4xl overflow-y-auto rounded-3xl border border-white/10 bg-[#0f111a] px-6 py-6 text-white shadow-md sm:w-full sm:px-10 sm:py-9 max-h-[85vh]"
         onClick={handleContentClick} // Prevents modal close when clicking on the content
@@ -336,7 +447,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerEnd}
             onPointerCancel={handlePointerEnd}
-            className={`project-carousel flex gap-1 sm:gap-2 overflow-x-auto px-4 sm:px-6 pb-3 select-none ${
+            className={`project-carousel flex gap-0.5 sm:gap-1 overflow-x-auto px-4 sm:px-6 pb-3 select-none ${
               isDragging || isWheeling ? "snap-none" : "snap-x snap-mandatory"
             } ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
           >
@@ -347,15 +458,20 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   key={photo.key}
                   data-photo-key={photo.key}
                   data-photo-index={photo.index}
-                  className={`snap-center flex-none w-[17rem] sm:w-[23rem] md:w-[27rem] ${
+                  onClick={() => handlePhotoClick(photo.key, photo.index)}
+                  className={`group snap-center flex-none w-[17rem] sm:w-[23rem] md:w-[27rem] ${
                     isWheeling ? "transition-none" : "transition-[opacity,transform] duration-300 ease-out"
-                  } ${isActive ? "opacity-100 scale-[1.05]" : "opacity-35 scale-[0.86]"}`}
+                  } ${isActive ? "opacity-100 scale-[1.05]" : "opacity-35 scale-[0.86]"} cursor-pointer`}
                 >
-                  <div className="h-[12rem] sm:h-[14rem] md:h-[16rem] overflow-hidden rounded-2xl flex items-center justify-center">
+                  <div
+                    className="h-[12rem] sm:h-[14rem] md:h-[16rem] overflow-hidden rounded-2xl flex items-center justify-center border border-transparent transition-all duration-200 group-hover:border-white group-hover:shadow-[0_0_0_2px_rgba(255,255,255,0.7)]"
+                    data-photo-clickable
+                    data-photo-index={photo.index}
+                  >
                     <img
                       src={photo.src}
                       alt={`Project image ${photo.index + 1}`}
-                      className="object-contain w-full h-full"
+                      className="object-contain w-full h-full transition-transform duration-200 group-hover:scale-[1.04]"
                       draggable="false"
                       loading={photo.copyIndex === Math.floor(copyCount / 2) && photo.index === 0 ? "eager" : "lazy"}
                       decoding="async"
@@ -365,6 +481,14 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 </div>
               );
             })}
+          </div>
+          <div className="pointer-events-none absolute left-1/2 top-[-2rem] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+            <div
+              className={`flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white/80 animate-pulse shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-500 ease-out ${showDragHint ? "opacity-100 scale-100" : "opacity-0 scale-96 invisible"}`}
+            >
+              <span aria-hidden="true" className="text-base leading-none">{'\u27F7'}</span>
+              <span className="leading-none">drag or click</span>
+            </div>
           </div>
           <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[#0f111a] to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[#0f111a] to-transparent" />
@@ -407,3 +531,8 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 };
 
 export default ProjectModal;
+
+
+
+
+
