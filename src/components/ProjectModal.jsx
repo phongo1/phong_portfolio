@@ -447,7 +447,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerEnd}
             onPointerCancel={handlePointerEnd}
-            className={`project-carousel flex gap-0.5 sm:gap-1 overflow-x-auto px-4 sm:px-6 pb-3 select-none ${
+            className={`project-carousel flex gap-0.5 sm:gap-1 overflow-x-auto px-4 sm:px-6 py-4 sm:py-6 select-none ${
               isDragging || isWheeling ? "snap-none" : "snap-x snap-mandatory"
             } ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
           >
@@ -482,11 +482,16 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               );
             })}
           </div>
-          <div className="pointer-events-none absolute left-1/2 top-[-2rem] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+          <div className="pointer-events-none absolute left-1/2 top-[-1rem] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
             <div
               className={`flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white/80 animate-pulse shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-500 ease-out ${showDragHint ? "opacity-100 scale-100" : "opacity-0 scale-96 invisible"}`}
             >
-              <span aria-hidden="true" className="text-base leading-none">{'\u27F7'}</span>
+              <span
+                aria-hidden="true"
+                className="inline-flex h-4 items-center justify-center text-base leading-none -translate-y-[1px]"
+              >
+                {'\u27F7'}
+              </span>
               <span className="leading-none">drag or click</span>
             </div>
           </div>
