@@ -24,6 +24,7 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
   const scrollHintRef = useRef(null);
   const scrollHintAnchorRef = useRef(null);
   const scrollHintTimerRef = useRef(null);
+  const rootOverflowRef = useRef(null);
   const gridRef = useRef(null);
   const firstItemRef = useRef(null);
   const rowMetricsRef = useRef({ rowHeight: 0 });
@@ -180,12 +181,17 @@ const PhotoGalleryModal = ({ isOpen, onClose, photos = [], title = "Photo Galler
     };
 
     const previousOverflow = document.body.style.overflow;
+    const root = document.getElementById("root");
+    rootOverflowRef.current = root ? root.style.overflow : null;
+
     document.body.style.overflow = "hidden";
+    if (root) root.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = previousOverflow;
+      if (root) root.style.overflow = rootOverflowRef.current ?? "";
     };
   }, [isOpen, onClose]);
 
