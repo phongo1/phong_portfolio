@@ -1,4 +1,8 @@
 const galleryMeta = {
+    "steez.jpeg": {
+        description: "steez",
+        date: "2026-01-31",
+    },
     "fan.jpeg": {
         description: "fan",
         date: "2026-01-29",
