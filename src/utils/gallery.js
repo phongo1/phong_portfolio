@@ -1,10 +1,18 @@
 const galleryMeta = {
+    "derp.jpeg": {
+        description: "derp",
+        date: "2026-02-15",
+    },
+    "flowers.jpeg": {
+        description: "trader joes",
+        date: "2026-02-14",
+    },
     "steez.jpeg": {
         description: "steez",
         date: "2026-01-31",
     },
     "fan.jpeg": {
-        description: "fan",
+        description: "piccaso 🗿",
         date: "2026-01-29",
     },
     "snowRotunda.jpeg": {
