@@ -12,7 +12,7 @@ const galleryMeta = {
         date: "2026-01-31",
     },
     "fan.jpeg": {
-        description: "piccaso 🗿",
+        description: "piccaso who",
         date: "2026-01-29",
     },
     "snowRotunda.jpeg": {
