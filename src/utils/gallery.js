@@ -1,4 +1,12 @@
 const galleryMeta = {
+    "chicken-bowl.jpeg": {
+        description: "ube matcha",
+        date: "2026-02-19",
+    },
+    "aloft-el-segundo.jpeg": {
+        description: "x y z",
+        date: "2026-02-19",
+    },
     "derp.jpeg": {
         description: "derp",
         date: "2026-02-15",
