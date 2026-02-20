@@ -1,10 +1,18 @@
 const galleryMeta = {
-    "chicken-bowl.jpeg": {
-        description: "dre's cafe - LA",
-        date: "2026-02-19",
+    "the-delphi.jpg": {
+        description: "the delphi",
+        date: "2026-02-20",
+    },
+    "negroni.jpg": {
+        description: "negroni",
+        date: "2026-02-20",
+    },
+    "central-library.jpeg": {
+        description: "DTLA central library",
+        date: "2026-02-20",
     },
     "aloft-el-segundo.jpeg": {
-        description: "x y z",
+        description: "xyz",
         date: "2026-02-19",
     },
     "derp.jpeg": {
@@ -97,7 +105,7 @@ const galleryMeta = {
     },
     "cville.jpeg": { description: "downtown cville", date: "2025-11-14" },
     "LAOutlook1.jpeg": { description: "LA outlook", date: "2025-03-08" },
-    "LAOutlook2.jpeg": { description: "skyline view of LA", date: "2025-03-08" },
+    "LAOutlook2.jpeg": { description: "LA skyline", date: "2025-03-08" },
     "MiamiMall.jpeg": { description: "miami mall", date: "2024-12-27" },
     "UVAPrettyRotunda.jpeg": { description: "rotunda ;o", date: "2024-04-25" },
     "UVARotunda.jpeg": {
@@ -128,7 +136,7 @@ const galleryMeta = {
         date: "2025-04-24",
     },
     "catCafe.jpeg": {
-        description: "big and huge cat - leesburg cat cafe",
+        description: "big and huge cat",
         date: "2024-01-11",
     },
     "claySculturesActivity.jpeg": {
@@ -178,7 +186,7 @@ const galleryMeta = {
         date: "2025-08-09",
     },
     "seasideBakery.jpeg": {
-        description: "seaside bakery #keshi #stussy",
+        description: "seaside bakery",
         date: "2025-03-11",
     },
     "steaksInMiami.jpeg": {
