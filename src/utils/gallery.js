@@ -3,6 +3,10 @@ const galleryMeta = {
         description: "santa monica",
         date: "2026-02-20",
     },
+    "rok.jpeg": {
+        description: "top 3 on beli",
+        date: "2026-02-20",
+    },
     "jincook.jpeg": {
         description: "jincook",
         date: "2026-02-20",
@@ -18,10 +22,6 @@ const galleryMeta = {
     "central-library.jpeg": {
         description: "DTLA central library",
         date: "2026-02-19",
-    },
-    "aloft-el-segundo.jpeg": {
-        description: "xyz",
-        date: "2026-02-18",
     },
     "derp.jpeg": {
         description: "derp",
