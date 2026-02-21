@@ -1,19 +1,27 @@
 const galleryMeta = {
-    "the-delphi.jpg": {
-        description: "the delphi",
+    "santa-monica.jpeg": {
+        description: "santa monica",
         date: "2026-02-20",
+    },
+    "jincook.jpeg": {
+        description: "jincook",
+        date: "2026-02-20",
+    },
+    "delphi.jpeg": {
+        description: "the delphi",
+        date: "2026-02-19",
     },
     "negroni.jpg": {
         description: "negroni",
-        date: "2026-02-20",
+        date: "2026-02-19",
     },
     "central-library.jpeg": {
         description: "DTLA central library",
-        date: "2026-02-20",
+        date: "2026-02-19",
     },
     "aloft-el-segundo.jpeg": {
         description: "xyz",
-        date: "2026-02-19",
+        date: "2026-02-18",
     },
     "derp.jpeg": {
         description: "derp",
