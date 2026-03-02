@@ -172,8 +172,8 @@ const projects = [
         video: "path/to/video1.mp4",
     },
     {
-        name: "Fantasy Game",
-        type: { name: "2D - Arena Game", color: "emerald-400" },
+        name: "2D Combat Platformer",
+        type: { name: "Game", color: "emerald-400" },
         image: assets.game_logo,
         description:
             "A 2D RPG inspired shooter-platformer game built with pygame and UVAGE (UVA game engine)",
