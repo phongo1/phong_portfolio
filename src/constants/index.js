@@ -177,9 +177,11 @@ const projects = [
         image: assets.game_logo,
         description:
             "A 2D RPG inspired shooter-platformer game built with pygame and UVAGE (UVA game engine)",
-            "Implemented a character progression system that allows players to purchase permanent stat upgrades (Fire Rate, Speed, and Damage) using in-game currency"
         photos: assets.game,
-        bullets: ["An arena-style combat system featuring wave-based enemy AI, projectile tracking, and collision detection logic"],
+        bullets: [
+            "An arena-style combat system featuring wave-based enemy AI, projectile tracking, and collision detection logic",
+            "Implemented a character progression system that allows players to purchase permanent stat upgrades (Fire Rate, Speed, and Damage) using in-game currency"
+        ],
         skills: [
             { name: "Python", color: "yellow" },
             { name: "Pygame", color: "red" },
@@ -195,7 +197,7 @@ const projects = [
             'A commissioned website for Jose, an author publishing a book called "Queen of Heaven"',
         photos: assets.website,
         bullets: [
-            "Developed a custom author portfolio website for Jose Mercado Ventura to promote the publication of the book "Queen of Heaven."",
+            "Developed a custom author portfolio website for Jose Mercado Ventura to promote the publication of the book \"Queen of Heaven.\"",
         ],
         skills: [
             { name: "HTML/CSS", color: "cyan" },
