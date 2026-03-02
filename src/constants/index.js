@@ -138,7 +138,7 @@ const projects = [
             "A web app that helps users achieve their fitness or dietary goals by recommending grocery products based on nutrient compatibility and personalized ratings.",
         photos: assets.nutrifit,
         bullets: [
-            "Allows users to select goals like bulking, cutting, keto, or diabetic and recommends products accordingly",
+            // "Allows users to select goals like bulking, cutting, keto, or diabetic and recommends products accordingly",
             "Integrates Kroger's Product API to fetch grocery items and Nutritionix API to retrieve detailed nutritional data",
             "Implements a custom Nutrition Rating algorithm to rank products based on user goals",
             "Enables users to save selected items for later comparison and planning",
@@ -177,8 +177,9 @@ const projects = [
         image: assets.game_logo,
         description:
             "A 2D RPG inspired shooter-platformer game built with pygame and UVAGE (UVA game engine)",
+            "Implemented a character progression system that allows players to purchase permanent stat upgrades (Fire Rate, Speed, and Damage) using in-game currency"
         photos: assets.game,
-        bullets: ["Final project for CS 1110 (Intro to Programming)"],
+        bullets: ["An arena-style combat system featuring wave-based enemy AI, projectile tracking, and collision detection logic"],
         skills: [
             { name: "Python", color: "yellow" },
             { name: "Pygame", color: "red" },
@@ -187,14 +188,14 @@ const projects = [
         video: "https://www.youtube.com/watch?v=FLIzubXNmyo&ab_channel=PhongLe",
     },
     {
-        name: "Jose's Website",
+        name: "Author Portfolio",
         type: { name: "Website", color: "lime-300" },
         image: assets.joseweb_thumbnail,
         description:
-            'A commisioned website for Jose, an author publishing a book called "Queen of Heaven"',
+            'A commissioned website for Jose, an author publishing a book called "Queen of Heaven"',
         photos: assets.website,
         bullets: [
-            "A simple website to showcase the book and author - built with HTML/CSS/JS and deployed with Github Pages",
+            "Developed a custom author portfolio website for Jose Mercado Ventura to promote the publication of the book "Queen of Heaven."",
         ],
         skills: [
             { name: "HTML/CSS", color: "cyan" },
