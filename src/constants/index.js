@@ -71,7 +71,7 @@ const experiences = [
         iconBg: "white",
         date: "Fall 2023",
         points: [
-            "Worked closely with Professor Sebastian Elbaum to fine-tune Meta Llama2 LLM, automating natural language to regex conversions",
+            "Collaborated closely with Professor Sebastian Elbaum to fine-tune the Meta Llama 2 LLM, automating conversion of finite-state automata representations into regular expressions.",
         ],
     },
     {
@@ -82,7 +82,7 @@ const experiences = [
         date: "Summer 2023",
         points: [
             "Led a team of 5 interns to train OpenAI’s 4o LLM, automating the editing process of Non-Disclosure Agreements",
-            "Built and deployed a web application using React and Vercel, allowing model integration into client’s workflow",
+            "Built and deployed a web application using React and Vercel, allowing model integration into client workflow",
         ],
     },
 ];
@@ -172,7 +172,7 @@ const projects = [
         video: "path/to/video1.mp4",
     },
     {
-        name: "2D Combat Platformer",
+        name: "2D Platformer",
         type: { name: "Game", color: "emerald-400" },
         image: assets.game_logo,
         description:
