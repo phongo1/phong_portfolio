@@ -27,7 +27,7 @@ const experiences = [
         iconBg: "white",
         date: "Fall 2025 - Present",
         points: [
-            "Building www.floodwatch.io",
+            "www.floodwatch.io",
             "A Next.js + Prisma flood risk prediction platform increasing flood warning across Vietnam",
         ],
     },
@@ -38,7 +38,7 @@ const experiences = [
         iconBg: "white",
         date: "Fall 2025 - Present",
         points: [
-            "Maintaining thecourseforum.com",
+            "thecourseforum.com",
             "A Python/Django course review platform supporting 12,000+ UVA students every semester",
         ],
     },
