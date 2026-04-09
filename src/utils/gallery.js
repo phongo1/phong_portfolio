@@ -1,4 +1,12 @@
 const galleryMeta = {
+    "guajiros.jpeg": {
+        description: "guajiros",
+        date: "2026-04-05",
+    },
+    "picnic.jpeg": {
+        description: "lawn picnic",
+        date: "2026-03-26",
+    },
     "midori.jpeg": {
         description: "peak",
         date: "2026-03-01",
