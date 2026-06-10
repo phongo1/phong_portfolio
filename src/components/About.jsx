@@ -68,9 +68,9 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ type: 'spring', stiffness: 35, damping:10, duration: .6 }}
         >
-          <p>I'm a fourth year Computer Science student at the University of Virginia. </p>
+          <p>I am a University of Virginia alumni. </p>
           <br></br>
-          <p>I'm wrapping up a BSCS with a minor in applied mathematics. </p>
+          <p>I studied Computer Science with a minor in applied mathematics. </p>
           <br></br>
           <p>I have a passion for learning and making an impact through software.</p>
           <div className='w-full h-auto flex mt-14 '>
