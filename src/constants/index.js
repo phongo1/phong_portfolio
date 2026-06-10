@@ -25,7 +25,7 @@ const experiences = [
         company_name: "UVA Engineering Link Lab",
         icon: assets.floodwatch_logo,
         iconBg: "white",
-        date: "Fall 2025 - Present",
+        date: "Fall 2025 - Spring 2026",
         points: [
             "www.floodwatch.io",
             "A Next.js + Prisma flood risk prediction platform increasing flood warning across Vietnam",
@@ -36,7 +36,7 @@ const experiences = [
         company_name: "theCourseForum",
         icon: assets.tCF_logo,
         iconBg: "white",
-        date: "Fall 2025 - Present",
+        date: "Fall 2025 - Spring 2026",
         points: [
             "thecourseforum.com",
             "A Python/Django course review platform supporting 12,000+ UVA students every semester",
