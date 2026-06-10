@@ -1,4 +1,28 @@
 const galleryMeta = {
+    "monkeys.jpeg": {
+        description: "monkeys in kyoto",
+        date: "2026-06-01",
+    },
+    "bambooForest.jpeg": {
+        description: "bamboo forest",
+        date: "2026-06-01",
+    },
+    "osakaCastle.jpeg": {
+        description: "osaka castle",
+        date: "2026-05-30",
+    },
+    "danang.jpeg": {
+        description: "da nang beach",
+        date: "2026-05-26",
+    },
+    "khoiFishCafe.jpeg": {
+        description: "khoi fish cafe in saigon",
+        date: "2026-05-25",
+    },
+    "balloonWalk.jpeg": {
+        description: "balloon walk",
+        date: "2026-05-17",
+    },
     "guajiros.jpeg": {
         description: "guajiros",
         date: "2026-04-05",
