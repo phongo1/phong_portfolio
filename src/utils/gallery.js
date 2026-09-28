@@ -63,10 +63,6 @@ const galleryMeta = {
         description: "derp",
         date: "2026-02-15",
     },
-    "flowers.jpeg": {
-        description: "trader joes",
-        date: "2026-02-14",
-    },
     "steez.jpeg": {
         description: "steez",
         date: "2026-01-31",
